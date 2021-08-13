@@ -111,6 +111,13 @@ body{
   text-align: left;
 }
 
+.txtMotivoDes {
+    background-color: #F2f2F2;
+    width: 820px;
+    border-radius: 200px;
+    text-align: left;
+}
+
 .txtHoras {
   background-color: #F2f2F2;
   width: 190px;
@@ -135,11 +142,19 @@ body{
 }
 
 .carta {
-  /* background-color: red; */
+   /*background-color: red;*/ 
   height: 80px;
   width: 250px;
   margin-right: 60px;
   margin-top: 25px;
+}
+
+.cartaMotivo {
+    /*background-color: green;*/
+    height: 80px;
+    width: 570px;
+    margin-right: 60px;
+    margin-top: 25px;
 }
 
 

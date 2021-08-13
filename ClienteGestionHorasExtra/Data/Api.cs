@@ -40,6 +40,10 @@ namespace ClienteGestionHorasExtra.Data
                     {
                         return "Ya hay un registro con esa informacion";
                     }
+                    else if (message.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    {
+                        return "No se encontro el recurso";
+                    }
                     else
                     {
                         var task2 = Task<string>.Run(async () =>
@@ -189,6 +193,53 @@ namespace ClienteGestionHorasExtra.Data
                         });
                         string mens = task2.Result;
                         lista = JsonConvert.DeserializeObject<List<ModelTarea>>(mens);
+
+                    }
+                    return lista;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+
+        public List<Persona> ObtenerFuncionarios(string Base2)
+        {
+            try
+            {
+                List<Persona> lista = null;
+
+                using (var client = new HttpClient())
+                {
+                    var task = Task.Run(async () =>
+                    {
+                        return await client.GetAsync(URL_API + Base2);
+                    }
+                    );
+                    HttpResponseMessage message = task.Result;
+                    if (message.StatusCode == System.Net.HttpStatusCode.InternalServerError)
+                    {
+                        var task1 = Task<string>.Run(async () =>
+                        {
+                            return await message.Content.ReadAsStringAsync();
+                        });
+                        string mens = task1.Result;
+                        ModelError error = JsonConvert.DeserializeObject<ModelError>(mens);
+                        return lista;
+
+                    }
+                    else
+                    {
+                        var task2 = Task<string>.Run(async () =>
+                        {
+                            return await message.Content.ReadAsStringAsync();
+                        });
+                        string mens = task2.Result;
+                        lista = JsonConvert.DeserializeObject<List<Persona>>(mens);
 
                     }
                     return lista;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,5 +22,12 @@ namespace ClienteGestionHorasExtra.Models
         public int Horas { get; set; }
 
         public bool Estado { get; set; }
+
+        public List<string> funcionarios { get; set; }
+
+        public string ToJsonString()
+        {
+            return JsonConvert.SerializeObject(this, Formatting.None);
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿
+﻿@model ModelTarea
 
 <!DOCTYPE html>
 <html lang="en">
@@ -137,29 +137,12 @@
 
                         <div class="card-body">
 
-                            <div class="row">
+                            <form asp-controller="Jefatura" asp-action="EnviarSolicitud">
 
-                                <div class="carta">
-                                    <h4 class="card-title">Nombre de la actividad</h4>
+                                <div class="cartaMotivo">
+                                    <h4 class="card-title">Nombre o motivo de la actividad</h4>
                                     <div class="col-md-10 row">
-                                        <input type="text" placeholder="Nombre" class="form-control form-control-line txtMotivo" />
-                                    </div>
-
-                                </div>
-
-                                <div class="carta">
-                                    <h4 class="card-title">Funcionario</h4>
-                                    <div class="col-md-10 row">
-                                        <input type="text" placeholder="Nombre" class="form-control form-control-line txtMotivo" />
-                                    </div>
-
-                                </div>
-                            </div>
-                                
-                                <div class="carta1">
-                                    <h4 class="card-title">Descripcion de la actividad</h4>
-                                    <div class="col-md-1">
-                                        <textarea placeholder="Descripcion" class="form-control form-control-line txtArea"></textarea>
+                                        <input asp-for="Motivo" type="text" placeholder="Motivo" class="form-control form-control-line txtMotivoDes" />
                                     </div>
 
                                 </div>
@@ -167,10 +150,25 @@
                                 <div class="row">
 
                                     <div class="carta">
+                                        <h4 class="card-title">Funcionario</h4>
+                                        <div class="col-md-10 row">
+                                            <select asp-for="email" class="form-control form-control-line txtMotivo">
+                                                @foreach (string data in Model.funcionarios)
+                                                {
+                                                    <option value="@data">@data</option>
+                                                }
+                                                <option class="opcion" value="" disabled selected hidden>Motivo</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="carta">
                                         <h4 class="card-title">Fecha Inicio</h4>
                                         <div class="form-group row">
                                             <div class="col-md-10 row">
-                                                <input placeholder="Fecha" class="form-control form-control-line txtMotivo" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" />
+                                                <input asp-for="entrada" type="time" placeholder="Motivo" value="08:00" min="08:00" max="21:00"
+                                                       class="form-control form-control-line txtMotivo" />
                                             </div>
                                         </div>
                                     </div>
@@ -178,7 +176,21 @@
                                     <div class="carta">
                                         <h4 class="card-title">Fecha Limite</h4>
                                         <div class="col-md-10 row">
-                                            <input placeholder="Fecha" class="form-control form-control-line txtMotivo" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" />
+                                            <input asp-for="Salida" type="time" placeholder="Motivo" value="08:00" min="08:00" max="21:00"
+                                                   class="form-control form-control-line txtMotivo" />
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="carta">
+                                        <h4 class="card-title">Fecha</h4>
+                                        <div class="col-md-10 row">
+                                            <input asp-for="Fecha" placeholder="Fecha" class="form-control form-control-line txtMotivo"
+                                                   type="text" onfocus="(this.type='date')" onblur="(this.type='text')"
+                                                   id="date" />
                                         </div>
 
                                     </div>
@@ -187,20 +199,27 @@
                                         <h4 class="card-title">Horas Aproximadas</h4>
                                         <div class="form-group row">
                                             <div class="col-md-4">
-                                                <input type="number" placeholder="Horas" min="1" max="99" class="form-control form-control-line txtHoras" />
+                                                <input asp-for="Horas" type="number" placeholder="Horas" min="1" max="99" class="form-control form-control-line txtHoras" />
                                             </div>
                                             <div class="col-md-1">
                                                 <div class="text-end upgrade-btn ">
-                                                    <a onclick="definirCantidadDigitos()" class="btn text-white btnEstablecer">Enviar</a>
+                                                    <button class="btn text-white btnEstablecer">Enviar</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
+                                @*<div class="carta1">
+                                    <h4 class="card-title">Descripcion de la actividad</h4>
+                                    <div class="col-md-1">
+                                        <textarea placeholder="Descripcion" class="form-control form-control-line txtArea"></textarea>
+                                    </div>
+
+                                </div>*@
                         </div>
 
-                    <div class="card">
+                    @*<div class="card">
 
                         <div class="Tablacarta">
                             <h4 class="card-title">Tabla de solicitudes de Jefatura</h4>
@@ -247,7 +266,7 @@
                             </div>
                         </div>
 
-                    </div>
+                    </div>*@
 
 
                 </div>
