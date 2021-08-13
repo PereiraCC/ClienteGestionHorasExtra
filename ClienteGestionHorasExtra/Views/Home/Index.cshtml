@@ -1,0 +1,98 @@
+﻿@model Persona
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords"
+          content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Xtreme lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Xtreme admin lite design, Xtreme admin lite dashboard bootstrap 5 dashboard template">
+    <meta name="description"
+          content="Xtreme Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="robots" content="noindex,nofollow">
+
+    <link rel="canonical" href="https://www.wrappixel.com/templates/xtreme-admin-lite/" />
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon.png">
+    <!-- Custom CSS -->
+    <link href="dist/css/style.min.css" rel="stylesheet">
+    <link href="css/site.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/formulariosAvalados.css">
+
+    <title>Inicio de Sesión</title>
+
+</head>
+<body>
+
+    <div id="main-wrapper" data-layout="vertical" data-position="fixed" data-navbarbg="skin5" data-sidebartype="full"
+         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+
+        <!-- Menu horizontal de arriba azul -->
+        <header class="topbar" data-navbarbg="skin5">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark menu">
+                <div class="navbar-header" data-logobg="skin5">
+                    <div class="row">
+                        <a class="navbar-brand menu" href="index.html">
+                            <div id="nav">
+                                <img src="img/logo.png">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+                    <div id="nav">
+                        <a asp-controller="Home" asp-action="Registro">
+                            <p class="nuevacuenta">Crear nueva cuenta</p>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+    </div>
+
+    <div id="parte1">
+
+        <h1 class="titulo">Sistema de gestion y control de horas extra</h1>
+        <hr class="linea">
+        <p class="subtitulos"> Asignar Tareas </p>
+        <p class="subtitulos"> Llenar formularios </p>
+        <p class="subtitulos"> Adjuntar Evidencias </p>
+        <p class="subtitulos"> Generar informes de plantillas </p>
+        <p class="subtitulos"> Realizar el pago de horas extra </p>
+        <p class="subtitulos"> Aceptar o denegar</p>
+        <p class="subtitulos"> Tareas  </p>
+        <p class="subtitulos"> Evidencias </p>
+        <p class="subtitulos"> Evidencias</p>
+        <p class="subtitulos"> Jornadas de tiempos extra </p>
+
+    </div>
+
+
+    <div id="logeo">
+
+        <form asp-controller="Home" asp-action="Index" autocomplete="off">
+
+
+            <h1 class="tituloInicio">Inicio de Sesión</h1> <br>
+
+            <input asp-for="email" id="text" type="email" placeholder="Correo Electronico">
+            <br>   </br>
+            <input asp-for="pass" id="text" type="password" placeholder="Contraseña">
+            <br> </br>
+            <br> </br>
+            <div id="boton">
+                <button id="btn">Ingresar</button>
+            </div>
+
+        </form>
+
+        <a asp-controller="Home" asp-action="Registro">Crear nueva cuenta</a>
+        <br> </br>
+    </div>
+
+
+</body>
+</html>

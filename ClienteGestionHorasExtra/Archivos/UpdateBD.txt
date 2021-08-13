@@ -1,0 +1,70 @@
+Update the data base
+
+//////////////////////////////////////////////////////////////
+FUNCIONARIOS
+tabla solicitudTareas
+
+idSolicitud
+idPersona
+Motivo
+Entrada
+Salida
+TotalHoras
+Fecha
+Estado
+
+tabla evidencias
+
+idEvidencia
+Hora inicial
+Hora final
+idSolicitud
+Ruta Archivo
+
+tabla de formulario avalados
+
+idFormulario
+idPersona
+FechaEnvio
+Mes
+Total Horas
+Ruta Archivo
+
+///////////////////////////////////////////////////////////////
+DIRECTOR ADMINISTRATIVO
+
+tabla de formulario tiempo
+
+idFormulario
+idFormularioAvalado
+HorasValidas
+Quincena
+
+///////////////////////////////////////////////////////////////
+CONTROL DE TIEMPO
+
+tabla de formulario pago
+
+idFormulario
+idFormularioTiempo
+Descripcion
+MontoDinero
+
+tabla jornadas
+
+idJornada
+Entrada
+Salida
+Total Horas
+
+///////////////////////////////////////////////////////////////
+PLANILLA
+
+tabla de pagos
+
+idPago
+idFormularioPago
+idTipoPago
+MontoPagado
+
+///////////////////////////////////////////////////////////////

@@ -1,0 +1,72 @@
+
+
+#inicio {
+    background-image: url("../img/inicio2.jpg");
+    height: auto;
+    overflow-x: hidden;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: auto;
+}
+
+#form {
+    background-color: #f2f2f2;
+    width: 500px;
+    height: 510px;
+    margin-left: 35%;
+    margin-top: 15px;
+    border-radius: 20px;
+    float: center;
+    text-align: center;
+}
+
+#user {
+    margin-top: 5%;
+    width: 130px;
+    height: 110px;
+    margin-bottom: 5px;
+}
+
+.text {
+    border-color: #f24b59;
+    border-radius: 10px;
+    border-color: #f24b59;
+    width: 400px;
+    height: 50px;
+    /* color: gray; */
+}
+
+#select {
+    width: 400px;
+    height: 50px;
+    border-radius: 10px;
+    border-color: #f24b59;
+    background-color: #f2f2f2;
+}
+
+
+#btn {
+    width: 150px;
+    height: 40px;
+    margin-top: 5%;
+    border-radius: 5px;
+    background-color: #f24b59;
+    color: #f2f2f2;
+    border-color: #f24b59;
+    font-size: larger;
+}
+
+.nuevacuenta {
+    float: right;
+    text-align: center;
+    font-size: 18px;
+    width: 180px;
+    color: #fff;
+    margin-top: 20px;
+    margin-right: 50px;
+}
+
+.opcion {
+    color: gray;
+}

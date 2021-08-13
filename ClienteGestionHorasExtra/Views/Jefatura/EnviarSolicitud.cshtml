@@ -1,0 +1,266 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords"
+          content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Xtreme lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Xtreme admin lite design, Xtreme admin lite dashboard bootstrap 5 dashboard template">
+    <meta name="description"
+          content="Xtreme Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="robots" content="noindex,nofollow">
+
+    <link rel="canonical" href="https://www.wrappixel.com/templates/xtreme-admin-lite/" />
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon.png">
+    <!-- Custom CSS -->
+    <link href="~/dist/css/style.min.css" rel="stylesheet">
+    <link href="~/css/site.css" rel="stylesheet">
+
+    <title>Enviar Solicitud</title>
+    <link rel="stylesheet" href="~/css/enviarSolicitud.css">
+</head>
+
+
+
+<body>
+
+    <!-- Menus -->
+    <div id="main-wrapper" data-layout="vertical" data-position="fixed" data-navbarbg="skin5" data-sidebartype="full"
+         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+
+        <!-- Menu horizontal de arriba azul -->
+        <header class="topbar" data-navbarbg="skin5">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark menu">
+                <div class="navbar-header" data-logobg="skin5">
+                    <div class="row">
+                        <a class="navbar-brand menu" href="index.html">
+                            <div id="nav">
+                                <img src="~/img/logo.png">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+                    <div id="nav">
+                        <a asp-controller="Home" asp-action="SingOut">
+                            <p class="cerrarSesion">Cerrar Sesion</p>
+                        </a>
+                        <p class="nombreUsuario">Jefatura</p>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!-- Fin del menu azul-->
+        <!-- Menu veritcal de la opciones -->
+        <aside class="left-sidebar" data-sidebarbg="skin6">
+            <div class="scroll-sidebar menuVertical">
+                <nav class="sidebar-nav ">
+                    <ul id="sidebarnav">
+                        <li class="menuVertical">
+                            <div class="user-profile d-flex no-block dropdown m-t-20">
+                                <div class="user-pic">
+                                    <img src="~/assets/images/users/1.jpg" alt="users"
+                                         class="rounded-circle" width="40" />
+                                </div>
+                                <div class="user-content hide-menu m-l-10">
+                                    <a href="#" class="" id="Userdd" role="button"
+                                       data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <h5 class="m-b-0 user-name font-medium">
+                                            @Usuario.nombreCompleto
+                                        </h5>
+                                        <span class="op-5 user-email">@Usuario.email</span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="Userdd">
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="javascript:void(0)">
+                                            <i class="fa fa-power-off m-r-5 m-l-5"></i> Cerrar Sesion
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End User Profile-->
+                        </li>
+                        <li class="sidebar-item menuVertical">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                               asp-controller="Jefatura" asp-action="EnviarSolicitud" aria-expanded="false">
+                                <i class="mdi mdi-view-dashboard"></i><span class="hide-menu opcion">Enviar solicitud</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item menuVertical">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                               asp-controller="Jefatura" asp-action="Evidencias" aria-expanded="false">
+                                <i class="mdi mdi-file-document"></i><span class="hide-menu opcion">Evidencias</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+        </aside>
+        <!-- Fin del menu vertical -->
+    </div>
+
+    <!-- Cuerpo de la pagina -->
+    <div class="page-wrapper cuerpo">
+
+        <!-- Titulo -->
+        <div class="page-breadcrumb">
+            <div class="row align-items-center">
+                <div class="col-5">
+                    <h2 class="page-title">
+                        Enviar Solicitud
+                    </h2>
+                    <div class="d-flex align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Jefatura</li>
+                                <li class="breadcrumb-item active" aria-current="page">Pantalla Enviar Solicitud</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Campos y tabla -->
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card ">
+
+                        <h3 class="tituloFormulario">Formulario de Solicitud de horas extra</h3>
+
+                        <div class="card-body">
+
+                            <div class="row">
+
+                                <div class="carta">
+                                    <h4 class="card-title">Nombre de la actividad</h4>
+                                    <div class="col-md-10 row">
+                                        <input type="text" placeholder="Nombre" class="form-control form-control-line txtMotivo" />
+                                    </div>
+
+                                </div>
+
+                                <div class="carta">
+                                    <h4 class="card-title">Funcionario</h4>
+                                    <div class="col-md-10 row">
+                                        <input type="text" placeholder="Nombre" class="form-control form-control-line txtMotivo" />
+                                    </div>
+
+                                </div>
+                            </div>
+                                
+                                <div class="carta1">
+                                    <h4 class="card-title">Descripcion de la actividad</h4>
+                                    <div class="col-md-1">
+                                        <textarea placeholder="Descripcion" class="form-control form-control-line txtArea"></textarea>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="carta">
+                                        <h4 class="card-title">Fecha Inicio</h4>
+                                        <div class="form-group row">
+                                            <div class="col-md-10 row">
+                                                <input placeholder="Fecha" class="form-control form-control-line txtMotivo" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="carta">
+                                        <h4 class="card-title">Fecha Limite</h4>
+                                        <div class="col-md-10 row">
+                                            <input placeholder="Fecha" class="form-control form-control-line txtMotivo" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" />
+                                        </div>
+
+                                    </div>
+
+                                    <div class="carta2">
+                                        <h4 class="card-title">Horas Aproximadas</h4>
+                                        <div class="form-group row">
+                                            <div class="col-md-4">
+                                                <input type="number" placeholder="Horas" min="1" max="99" class="form-control form-control-line txtHoras" />
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="text-end upgrade-btn ">
+                                                    <a onclick="definirCantidadDigitos()" class="btn text-white btnEstablecer">Enviar</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="card">
+
+                        <div class="Tablacarta">
+                            <h4 class="card-title">Tabla de solicitudes de Jefatura</h4>
+                            <h6 class="card-subtitle">
+                                Se muestra la tabla de las solicitudes de Jefatura
+                            </h6>
+                            <div class="col-md-12">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr class="encabezado">
+                                                <th scope="col">Actividad</th>
+                                                <th scope="col">Descripcion</th>
+                                                <th scope="col">Fecha Inicio</th>
+                                                <th scope="col">Fecha Limite</th>
+                                                <th scope="col">Horas Aproximadas</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Control de planilla</td>
+                                                <td>Revisar y ordenar las plantillas del mes julio</td>
+                                                <td>08/08/2021</td>
+                                                <td>10/08/2021</td>
+                                                <td>4</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Migracion de base datos</td>
+                                                <td>Realizar las migraciones de las base de datos</td>
+                                                <td>18/08/2021</td>
+                                                <td>22/08/2021</td>
+                                                <td>12</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Planificar las capacitaciones</td>
+                                                <td>Definir las fechas de la capacitaciones de Agosto</td>
+                                                <td>03/08/2021</td>
+                                                <td>05/08/2021</td>
+                                                <td>2</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer1 text-center">
+            <hr class="linea">
+            <p> © 2021 Gestion Horas Extra. Todos los derechos reservados.</p>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

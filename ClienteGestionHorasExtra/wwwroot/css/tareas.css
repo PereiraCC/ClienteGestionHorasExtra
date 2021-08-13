@@ -1,0 +1,338 @@
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: red;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+
+  /* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover, .next:hover {
+    background-color:  #F2f2F2
+
+  }
+
+  .imgcard{
+    margin-left: 5px;
+    margin-top:2px;
+    margin: auto;
+    width: 180px;
+    /* background-color: red; */
+  }
+  
+  h4{
+    text-align: center;
+    font-size: medium;
+  }
+  
+  .card-text{
+    text-align: center;
+    font-size: small;
+  }
+  .btncard{
+  
+    background-color:  #f24b59;
+    color: #f2f2f2;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    border-color: #f24b59;
+    margin-bottom: 5px;
+    margin-left: 20px;
+    margin-right: auto;
+    font-size:small;
+    }
+
+    body{
+
+      background-color:#fff ;
+      height: auto;
+      overflow-x: hidden;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-size:cover;
+      margin: auto ;
+    }
+    
+    #nav{
+      width: 100%;
+      height: 100px; 
+      background-color: #0e0c35;  
+    }
+    
+    .menu {
+      background-color: #0e0c35; 
+    }
+    
+    .cerrarSesion {
+      float: right;
+      text-align: center;
+      font-size: 18px;
+      width: 120px;
+      color: #fff;
+      margin-top: 20px;
+      margin-right: 50px;
+    }
+    
+    .nombreUsuario {
+      float: right;
+      text-align: center;
+      font-size: 18px;
+      width: 130px;
+      color: #fff;
+      margin-top: 20px;
+      margin-right: 20px;
+    }
+    
+    .opcion {
+      color: black;
+      font-size: 18px;
+    }
+    
+    .menuVertical {
+      background-color:#F2f2F2
+    }
+    
+    #nav img {
+      color: #fff;
+      margin-left: 5%;
+      float: left;
+      width:140px;
+      margin-top:1%;
+    }
+    .sidebar {
+    
+      left: -250px;
+      width: 250px;
+      height:auto;
+      background: #F2f2F2;
+      
+    }
+    
+    .sidebar header img {
+      margin-top: 13%;
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+    }
+    .sidebar header {
+      font-size: 22px;
+      color: #0e0c35;
+      text-align: center;
+      line-height: 30px;
+       background: #F2f2F2;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .sidebar ul a {
+      display: block;
+      height: 100%;
+      width: 100%;
+      line-height: 100px;
+      font-size: 18px;
+      color: #0e0c35;
+      padding-left: 20px;
+      box-sizing: border-box;
+      transition: 0.4s;
+    }
+    .sidebar ul a i {
+      margin-right: 16px;
+    }
+    
+    .cuerpo {
+      margin-left: 250px;
+    }
+    
+    .txtMotivo {
+      background-color: #F2f2F2;
+      width: 400px;
+      border-radius: 200px;
+      text-align: left;
+    }
+    
+    .txtChoose {
+      background-color: #F2f2F2;
+      width: 380px;
+      border-radius: 200px;
+      text-align: left;
+    }
+
+    .titulo {
+      /* background-color: red; */
+      position: absolute;
+      bottom: 80px;
+    }
+
+    .desc {
+      /* background-color: red; */
+      position: absolute;
+      bottom: 40px;
+      left: 75px;
+    }
+
+    .carta {
+      /* background-color: red; */
+      height: 218px;
+    }
+
+    .pointer {
+      cursor: pointer;
+    }
+
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 250;
+      margin-left: 550px;
+      top: 0;
+      width: 500px; /* Full width */
+      height: 600px; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      /* background-color: green; */
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 400px;
+      height: 450px;
+    }
+    
+    /* The Close Button */
+    .close {
+      color: red;
+      float: right;
+      margin-left: 350px;
+      font-size: 28px;
+      font-weight: bold;
+    }
+  
+    .closeN {
+      color: red;
+      float: right;
+      margin-left: 350px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .carta2 {
+      /* background-color: red; */
+      height: 90px;
+      width: 350px;
+    }
+
+    .cuerpo2 {
+      /* margin-left: 250px; */
+      /* background-color: red; */
+      height: 200px;
+    }
+
+    .titulo2 {
+      /* background-color: red; */
+      width: 180px;
+      margin-left: 10px;
+    }
+  
+    .carta3 {
+      margin-left: 15px;
+    }
+
+    .txtMotivo2 {
+      background-color: #F2f2F2;
+      width: 400px;
+      border-radius: 200px;
+      text-align: left;
+      height: 35px;
+      margin-left: 25px;
+    }
+  
+    .txtArea {
+      background-color: #F2f2F2;
+      width: 800px;
+      /* height: 250px; */
+      border-radius: 10px;
+      text-align: left;
+      margin-left: 25px;
+    }
+  
+    .btnEstablecer {
+      background-color: #F24B59;
+      border-radius: 15px;
+      /* margin-left: 10px; */
+      margin-bottom: 25px;
+      float: left;
+    }
+  
+    .btnEstablecer2 {
+      background-color: #F24B59;
+      border-radius: 15px;
+      margin-left: 35px;
+      margin-bottom: 25px;
+      float: left;
+    }
+  
+    .btnEstablecer3 {
+      background-color: #F24B59;
+      border-radius: 15px;
+      margin-left: 35px;
+      margin-bottom: 10px;
+      margin-top: 40px;
+      float: left;
+    }
+
+    .btnEstablecer3Actividades {
+      background-color: #F24B59;
+      border-radius: 15px;
+      margin-left: 15px;
+      margin-bottom: 10px;
+      margin-top: 40px;
+      float: left;
+    }
+
+    .btnEstablecer4 {
+      background-color: #0e0c35;
+      border-radius: 15px;
+      margin-left: 35px;
+      margin-bottom: 10px;
+      margin-top: 40px;
+      float: left;
+    }
+
+    a.btnEstablecer:hover {
+      background-color: #0e0c35;
+    }
+  
+    a.btnEstablecer2:hover {
+      background-color: #0e0c35;
+    }
+  
+    a.btnEstablecer3:hover {
+      background-color: #888;
+    }
