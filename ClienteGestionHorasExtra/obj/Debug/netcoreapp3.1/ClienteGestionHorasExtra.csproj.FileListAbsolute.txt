@@ -46,3 +46,4 @@ C:\Users\PereiraCoto\Documents\Personal\Cuatrimestre\Sitios\Proyecto\Avance 3\Cl
 C:\Users\PereiraCoto\Documents\Personal\Cuatrimestre\Sitios\Proyecto\Avance 3\ClienteGestionHorasExtra\ClienteGestionHorasExtra\obj\Debug\netcoreapp3.1\Razor\Views\ControlTiempo\Jornadas.cshtml.g.cs
 C:\Users\PereiraCoto\Documents\Personal\Cuatrimestre\Sitios\Proyecto\Avance 3\ClienteGestionHorasExtra\ClienteGestionHorasExtra\obj\Debug\netcoreapp3.1\Razor\Views\Planilla\Pagos.cshtml.g.cs
 C:\Users\PereiraCoto\Documents\Personal\Cuatrimestre\Sitios\Proyecto\Avance 3\ClienteGestionHorasExtra\ClienteGestionHorasExtra\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\PereiraCoto\Documents\Personal\Cuatrimestre\Sitios\Proyecto\Avance 3\ClienteGestionHorasExtra\ClienteGestionHorasExtra\obj\Debug\netcoreapp3.1\Razor\Views\Jefatura\Solicitudes.cshtml.g.cs

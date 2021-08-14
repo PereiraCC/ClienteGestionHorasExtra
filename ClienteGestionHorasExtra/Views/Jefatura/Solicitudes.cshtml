@@ -1,4 +1,6 @@
-﻿
+﻿@model List<ModelTarea>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -15,18 +17,17 @@
 
     <link rel="canonical" href="https://www.wrappixel.com/templates/xtreme-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/assets/images/favicon.png">
     <!-- Custom CSS -->
     <link href="~/dist/css/style.min.css" rel="stylesheet">
     <link href="~/css/site.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
-    <title>Evidencias</title>
-    <link rel="stylesheet" href="~/css/J_Evidencias.css">
-    <link rel="stylesheet" href="~/css/evidencias.css">
+    <title>Tareas</title>
     <link rel="stylesheet" href="~/css/tareas.css">
 </head>
 
@@ -52,7 +53,7 @@
                         <a asp-controller="Home" asp-action="SingOut">
                             <p class="cerrarSesion">Cerrar Sesion</p>
                         </a>
-                        <p class="nombreUsuario">Jefatura</p>
+                        <p class="nombreUsuario">Funcionario</p>
                     </div>
                 </div>
             </nav>
@@ -66,12 +67,12 @@
                         <li class="menuVertical">
                             <div class="user-profile d-flex no-block dropdown m-t-20">
                                 <div class="user-pic">
-                                    <img src="~/assets/images/users/1.jpg" alt="users"
-                                         class="rounded-circle" width="40" />
+                                    <img src="~/assets/images/users/1.jpg" alt="users" class="rounded-circle"
+                                         width="40" />
                                 </div>
                                 <div class="user-content hide-menu m-l-10">
-                                    <a href="#" class="" id="Userdd" role="button"
-                                       data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a href="#" class="" id="Userdd" role="button" data-bs-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false">
                                         <h5 class="m-b-0 user-name font-medium">
                                             @Usuario.nombreCompleto
                                         </h5>
@@ -117,13 +118,13 @@
         <div class="page-breadcrumb">
             <div class="row align-items-center">
                 <div class="col-5">
-                    <h2 class="page-title">Evidencias</h2>
+                    <h2 class="page-title">Tareas</h2>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Jefatura</li>
-                                <li class="breadcrumb-item active" aria-current="page">Evidencias</li>
+                                <li class="breadcrumb-item active" aria-current="page">Funcionarios</li>
+                                <li class="breadcrumb-item active" aria-current="page">Tareas</li>
                             </ol>
                         </nav>
                     </div>
@@ -132,61 +133,91 @@
         </div>
 
         <div class="container-fluid">
-
-            <!-- Actividades pendientes-->
-            <div class="col-12" style="width: 1080px;">
-                <div class="card " style="height: 150px;">
-                    <div class="card-body">
-
-                        <div class="row">
-                            <div class="carta">
-                                <h5 class="card-title">
-                                    Seleccionar departamento
-                                </h5>
-                                <h6 class="card-subtitle">
-                                    Revisar evidencias por departamento
-                                </h6>
-                                <div class="col-md-10">
-                                    <select class="form-control form-control-line txtChoose">
-                                        <option value="" selected>Jefatura</option>
-                                        <option value="" selected>Funcionario</option>
-                                        <option value="" selected>Director administrativo</option>
-                                        <option value="" selected>Encargado de control</option>
-                                        <option value="" selected>Encargado de planilla</option>
-                                        <option disabled selected hidden>Seleccionar departamento </option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="carta">
-                                <h5 class="card-title">
-                                    Seleccionar funcionario
-                                </h5>
-                                <h6 class="card-subtitle">
-                                    Revisar evidencias por Funcionario
-                                </h6>
-                                <div class="col-md-4">
-                                    <select class="form-control form-control-line txtChoose">
-                                        <option value="" selected>Yaresly Martinez Zuñiga</option>
-                                        <option value="" selected>Carlos Pereira Coto</option>
-                                        <option value="" selected>Rafael Martinez Quesada</option>
-                                        <option disabled selected hidden>Seleccionar funcionario </option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--  fin Actividades pendientes-->
             <!-- Solicitud tareas-->
             <div class="col-12" style="width: 1080px;">
                 <div class="card " style="height: 300px;">
 
                     <div class="card-body">
-                        <h5 class="card-title">Evidencias nuevas </h5>
+                        <h3 class="card-title">Solicitud de tareas</h3>
                         <!-- Carrusel de Cartas-->
                         <div class="row">
                             <div id="inam" class="carousel slide" data-ride="carousel">
+
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="container">
+                                            <div class="row">
+                                                @for (int i = 0; i < Model.Count; i++)
+                                                {
+                                                    <div class="col-sm-12 col-lg-4">
+                                                        <a id="@i" class="pointer" onclick="modalTarea('@i', '@Model[i].idSolicitud', '@Model[i].Motivo', '@Model[i].entrada', '@Model[i].Salida', '@Model[i].Horas', '@Model[i].Fecha')">
+                                                            <div class="card carta" style="width: 180px;margin: auto;">
+                                                                <img src="~/img/tarea.png" class="imgcard">
+                                                                <h4 class="card-title titulo">Solicitud</h4>
+                                                                <p class="card-text desc">@Model[i].idSolicitud</p>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+
+                                                    if (i == 2)
+                                                    {
+                                                        break;
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="carousel-item">
+                                        <div class="container">
+                                            <div class="row">
+
+                                                @for (int i = 3; i < Model.Count; i++)
+                                                {
+                                                    <div class="col-sm-12 col-lg-4">
+                                                        <a id="@i" class="pointer" onclick="modalTarea('@i', '@Model[i].idSolicitud', '@Model[i].Motivo', '@Model[i].entrada', '@Model[i].Salida', '@Model[i].Horas', '@Model[i].Fecha')">
+                                                            <div class="card carta" style="width: 180px;margin: auto;">
+                                                                <img src="~/img/tarea.png" class="imgcard">
+                                                                <h4 class="card-title titulo">Solicitud</h4>
+                                                                <p class="card-text desc">@Model[i].idSolicitud</p>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+
+                                                    if (i == 5)
+                                                    {
+                                                        break;
+                                                    }
+                                                }
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                                <a href="#inam" class="prev" data-slide="prev">&#10094;</a>
+                                <a href="#inam" class="next" data-slide="next">&#10095;</a>
+
+                            </div>
+
+                        </div>
+                        <!-- fin Carrusel de Cartas-->
+                    </div>
+                </div>
+            </div>
+            <!-- fin Solicitud tareas-->
+            <!-- Actividades pendientes-->
+            <!--<div class="col-12" style="width: 1080px;">
+                <div class="card " style="height: 300px;">
+
+                    <div class="card-body">
+                        <h3 class="card-title">Actividades pendientes </h3>-->
+                        <!-- Carrusel de Cartas-->
+                        <!--<div class="row">
+                            <div id="inam2" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <div class="container">
@@ -194,6 +225,7 @@
 
                                                 <div class="col-sm-12 col-lg-4">
                                                     <a id="tarea1" class="pointer" onclick="modalPendiente('tarea1')">
+
                                                         <div class="card carta" style="width: 180px;margin: auto;">
                                                             <img src="~/img/tarea.png" class="imgcard">
                                                             <h4 class="card-title titulo">Tarea</h4>
@@ -267,117 +299,87 @@
                                                     </a>
                                                 </div>
 
-                                                <!-- <div class="col-sm-12 col-lg-4">
-                                                    <div class="card" style="width: 180px;margin: auto;">
-                                                        <img src="img/tarea.png" class="imgcard">
-                                                        <div class="card-body">
-                                                            <h4 class="card-title">Solicitud</h4>
-                                                            <p class="card-text">00006</p>
-
-
-                                                            <div class="modal fade" id="myModal">
-                                                                <div class="modal-dialog">
-                                                                    <div class="modal-content">
-
-                                                                        <div class="modal-header">
-                                                                            <h4 class="modal-title">Modal Heading</h4>
-                                                                            <button type="button" class="close"
-                                                                                data-dismiss="modal">&times;</button>
-                                                                        </div>
-
-                                                                        <div class="modal-body">
-                                                                            Modal body..
-                                                                        </div>
-
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-danger"
-                                                                                data-dismiss="modal">Close</button>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>
-                                                </div> -->
-
                                             </div>
-
                                         </div>
-
-
                                     </div>
 
                                 </div>
-                                <a href="#inam" class="prev" data-slide="prev">&#10094;</a>
-                                <a href="#inam" class="next" data-slide="next">&#10095;</a>
+                                <a href="#inam2" class="prev" data-slide="prev">&#10094;</a>
+                                <a href="#inam2" class="next" data-slide="next">&#10095;</a>
 
                             </div>
 
-                        </div>
+                        </div>-->
                         <!-- fin Carrusel de Cartas-->
-                    </div>
+                    <!--</div>
                 </div>
+            </div>-->
+            <!--  fin Actividades pendientes-->
+        </div>
 
-                <div class="card">
-                    <div class="card-body">
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3 id="soli" ></h3>
 
-                        <div class="Tablacarta">
-                            <h5 class="card-title">
-                                Tabla de historial de evidencias
-                            </h5>
-                            <h6 class="card-subtitle">
-                                Se muestra la tabla de las evidencias recibidas
-                            </h6>
-                            <div class="col-md-12">
-                                <div class="table-responsive">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr class="encabezado">
-                                                <th scope="col">Evidencia</th>
-                                                <th scope="col">Nombre</th>
-                                                <th scope="col">Tarea Realizada</th>
-                                                <th scope="col">Estado</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>00001</td>
-                                                <td>Carlos Pereira Coto</td>
-                                                <td>Control de planilla</td>
-                                                <td>Aceptada</td>
+                <form asp-controller="Jefatura" asp-action="AceptarSolicitud">
+                    <div class="carta2">
+                        <h4 class="card-title titulo2">Motivo de la Solicitud</h4>
+                        <div class="form-group row">
+                            <div class="col-md-12 row">
+                                <input asp-for="@Model[0].Motivo" id="txtmotivo" type="text"
+                                       class="form-control form-control-line txtMotivo2" readonly />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carta2">
+                        <div class="form-group row">
+                            <div class="col-md-5 row">
+                                <h4 class="card-title">Entrada</h4>
+                                <input id="txtentrada" type="text"
+                                       class="form-control form-control-line txtMotivo2" readonly />
+                            </div>
+                            <div class="col-md-5 row carta3">
+                                <h4 class="card-title">Salida</h4>
+                                <input id="txtsalida" type="text"
+                                       class="form-control form-control-line txtMotivo2" readonly />
+                            </div>
+                        </div>
+                    </div>
 
-                                            </tr>
-                                            <tr>
-                                                <td>00002</td>
-                                                <td>Yaresly Martinez</td>
-                                                <td>Migracion de base datos</td>
-                                                <td>Pendiente</td>
+                    <div class="carta2">
+                        <div class="form-group row">
+                            <div class="col-md-5 row">
+                                <h4 class="card-title titulo2">Total de horas</h4>
+                                <input id="txtHoras" type="text"
+                                       class="form-control form-control-line txtMotivo2" readonly />
+                            </div>
+                            <div class="col-md-5 row carta3">
+                                <h4 class="card-title titulo2">Fecha</h4>
+                                <input id="txtfecha" type="text"
+                                       class="form-control form-control-line txtMotivo2" readonly />
+                            </div>
+                        </div>
+                    </div>
 
-                                            </tr>
-                                            <tr>
-                                                <td>00003</td>
-                                                <td>Rafale Martinez</td>
-                                                <td>Planificar las capacitaciones</td>
-                                                <td>Rechazada</td>
-
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                    <div class="carta2">
+                        <div class="form-group row">
+                            <div class="col-md-5 row carta3">
+                                <div class="text-end upgrade-btn">
+                                    <button
+                                       class="btn text-white btnEstablecer3Actividades">Aceptar</button>
+                                </div>
+                            </div>
+                            <div class="col-md-5 row carta3">
+                                <div class="text-end upgrade-btn">
+                                    <a onclick="cerrarModal()"
+                                       class="btn text-white btnEstablecer4">Cerrar</a>
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
-                </div>
-                <!-- fin Solicitud tareas-->
-
-
-
-
+                </form>
+                
             </div>
 
         </div>
@@ -393,21 +395,21 @@
                     <div class="form-group row">
                         <div class="col-md-12 row">
                             <input type="text" value="Realizar pedidos del mes Agosto"
-                                   class="form-control form-control-line txtMotivo3" readonly />
+                                   class="form-control form-control-line txtMotivo2" readonly />
                         </div>
                     </div>
                 </div>
                 <div class="carta2">
                     <div class="form-group row">
                         <div class="col-md-5 row">
-                            <h4 class="card-title titulo3">Entrada</h4>
-                            <input type="text" placeholder="08:00" class="form-control form-control-line txtMotivo4"
-                                   readonly />
+                            <h4 class="card-title">Entrada</h4>
+                            <input type="text" placeholder="08:00"
+                                   class="form-control form-control-line txtMotivo2" readonly />
                         </div>
                         <div class="col-md-5 row carta3">
-                            <h4 class="card-title titulo3">Salida</h4>
-                            <input type="text" placeholder="17:00" class="form-control form-control-line txtMotivo4"
-                                   readonly />
+                            <h4 class="card-title">Salida</h4>
+                            <input type="text" placeholder="17:00"
+                                   class="form-control form-control-line txtMotivo2" readonly />
                         </div>
                         <!-- <div class="col-md-1">
                             <div class="text-end upgrade-btn">
@@ -421,14 +423,14 @@
                 <div class="carta2">
                     <div class="form-group row">
                         <div class="col-md-5 row">
-                            <h4 class="card-title titulo3">Total de horas</h4>
-                            <input type="text" placeholder="8" class="form-control form-control-line txtMotivo4"
-                                   readonly />
+                            <h4 class="card-title titulo2">Total de horas</h4>
+                            <input type="text" placeholder="8"
+                                   class="form-control form-control-line txtMotivo2" readonly />
                         </div>
                         <div class="col-md-5 row carta3">
-                            <h4 class="card-title titulo3">Fecha</h4>
-                            <input type="text" value="17/08/2021" class="form-control form-control-line txtMotivo4"
-                                   readonly />
+                            <h4 class="card-title titulo2">Fecha</h4>
+                            <input type="text" value="17/08/2021"
+                                   class="form-control form-control-line txtMotivo2" readonly />
                         </div>
                     </div>
                 </div>
@@ -437,7 +439,14 @@
                     <div class="form-group row">
                         <div class="col-md-5 row carta3">
                             <div class="text-end upgrade-btn">
-                                <a onclick="cerrarModalActividades2()" class="btn text-white btnCerrar">Cerrar</a>
+                                <a href="/F_evidencias.html"
+                                   class="btn text-white btnEstablecer3Actividades">Adjuntar Evidencias</a>
+                            </div>
+                        </div>
+                        <div class="col-md-5 row carta3">
+                            <div class="text-end upgrade-btn">
+                                <a onclick="cerrarModalActividades()"
+                                   class="btn text-white btnEstablecer4">Cerrar</a>
                             </div>
                         </div>
                     </div>
@@ -450,14 +459,11 @@
             <hr class="linea">
             <p> © 2021 Gestion Horas Extra. Todos los derechos reservados.</p>
         </footer>
+
     </div>
 
     <script src="~/js/modalTareas.js"></script>
 
-
 </body>
-
-
-
 
 </html>

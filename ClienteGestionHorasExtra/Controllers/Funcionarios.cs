@@ -48,9 +48,18 @@ namespace ClienteGestionHorasExtra.Controllers
             return RedirectToAction("FormulariosAvalados");
         }
 
+        [HttpGet]
         public IActionResult FormulariosReportes()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult FormulariosReportes(ModelTarea tarea)
+        {
+            tarea.email = Usuario.email;
+            string res = api.ConnectPOST(tarea.ToJsonString(), "/Solicitud");
+            return RedirectToAction("FormulariosReportes");
         }
 
         public IActionResult Evidencias()

@@ -111,6 +111,13 @@ body{
   text-align: left;
 }
 
+.txtMotivoHoras {
+    background-color: #F2f2F2;
+    width: 180px;
+    border-radius: 200px;
+    text-align: left;
+}
+
 .txtHorasValidas {
   background-color: #F2f2F2;
   width: 180px;

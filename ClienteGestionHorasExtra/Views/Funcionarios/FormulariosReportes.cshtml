@@ -1,4 +1,4 @@
-﻿
+﻿@model ModelTarea
 
 <!DOCTYPE html>
 <html lang="en">
@@ -161,73 +161,68 @@
 
                         <div class="card-body">
 
-                            <div class="carta1">
-                                <h4 class="card-title">Motivo de la solicitud</h4>
-                                <div class="col-md-1">
-                                    <input type="text" placeholder="Motivo"
-                                           class="form-control form-control-line txtMotivo" />
+                            <form asp-controller="Funcionarios" asp-action="FormulariosReportes">
+
+                                <div class="carta1">
+                                    <h4 class="card-title">Motivo de la solicitud</h4>
+                                    <div class="col-md-1">
+                                        <input asp-for="Motivo" type="text" placeholder="Motivo"
+                                               class="form-control form-control-line txtMotivo" />
+                                    </div>
+
                                 </div>
 
-                            </div>
+                                <div class="row">
 
-                            <div class="row">
+                                    <div class="carta">
+                                        <h4 class="card-title">Total de Horas</h4>
+                                        <div class="form-group row">
+                                            <div class="col-md-10 row">
+                                                <input asp-for="Horas" type="number" placeholder="Horas" min="1" max="99"
+                                                       class="form-control form-control-line txtMotivo" />
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                <div class="carta">
-                                    <h4 class="card-title">Total de Horas</h4>
-                                    <div class="form-group row">
+                                    <div class="carta">
+                                        <h4 class="card-title">Fecha</h4>
                                         <div class="col-md-10 row">
-                                            <input type="number" placeholder="Horas" min="1" max="99"
+                                            <input asp-for="Fecha" placeholder="Fecha" class="form-control form-control-line txtMotivo"
+                                                   type="text" onfocus="(this.type='date')" onblur="(this.type='text')"
+                                                   id="date" />
+                                        </div>
+
+                                    </div>
+
+                                    <div class="carta">
+                                        <h4 class="card-title">Hora entrada</h4>
+                                        <div class="col-md-10 row">
+                                            <input asp-for="entrada" type="time" placeholder="Motivo" value="08:00" min="08:00" max="21:00"
                                                    class="form-control form-control-line txtMotivo" />
                                         </div>
+
                                     </div>
                                 </div>
 
-                                <div class="carta">
-                                    <h4 class="card-title">Fecha</h4>
-                                    <div class="col-md-10 row">
-                                        <input placeholder="Fecha" class="form-control form-control-line txtMotivo"
-                                               type="text" onfocus="(this.type='date')" onblur="(this.type='text')"
-                                               id="date" />
-                                    </div>
+                                <div class="row">
 
-                                </div>
-
-                                <div class="carta">
-                                    <h4 class="card-title">Hora entrada</h4>
-                                    <div class="col-md-10 row">
-                                        <input type="time" placeholder="Motivo" value="08:00" min="08:00" max="21:00"
-                                               class="form-control form-control-line txtMotivo" />
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="carta">
-                                    <h4 class="card-title">Hora salida</h4>
-                                    <div class="col-md-10 row">
-                                        <input type="time" placeholder="Motivo" value="08:00" min="08:00" max="21:00"
-                                               class="form-control form-control-line txtMotivo" />
-                                    </div>
-
-                                </div>
-
-                                <div class="carta2">
-                                    <h4 class="card-title">Horas validas</h4>
-                                    <div class="form-group row">
-                                        <div class="col-md-11">
-                                            <input type="number" placeholder="Horas validas" min="1" max="99"
-                                                   class="form-control form-control-line txtHorasValidas" />
-                                        </div>
-                                        <div class="col-md-1">
-                                            <div class="text-end upgrade-btn">
-                                                <a onclick="definirCantidadDigitos()"
-                                                   class="btn text-white btnEstablecer">Enviar</a>
+                                    <div class="carta2">
+                                        <h4 class="card-title">Horas salida</h4>
+                                        <div class="form-group row">
+                                            <div class="col-md-10">
+                                                <input asp-for="Salida" type="time" placeholder="Motivo" value="08:00" min="08:00" max="21:00"
+                                                       class="form-control form-control-line txtMotivoHoras" />
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="text-end upgrade-btn">
+                                                    <button class="btn text-white btnEstablecer">Enviar</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+
+                            </form>
                         </div>
                     </div>
 

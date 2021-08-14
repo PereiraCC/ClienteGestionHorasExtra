@@ -39,6 +39,19 @@ namespace ClienteGestionHorasExtra.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Solicitudes()
+        {
+            return View(api.ObtenerSolicitudesTareas("/Solicitud"));
+        }
+
+        [HttpPost]
+        public IActionResult AceptarSolicitud(List<ModelTarea> tareas)
+        {
+            string res = api.AceptarSolicitud(tareas[0].Motivo, "/Solicitud/AceptarSolicitud");
+            return RedirectToAction("Solicitudes");
+        }
+
         public string getEmail(string nombre)
         {
             try
