@@ -1,4 +1,4 @@
-﻿
+﻿@model List<ModelEvidencias>
 
 <!DOCTYPE html>
 <html>
@@ -137,43 +137,34 @@
             <div class="col-12" style="width: 1080px;">
                 <div class="card " style="height: 150px;">
                     <div class="card-body">
-
-                        <div class="row">
-                            <div class="carta">
-                                <h5 class="card-title">
-                                    Seleccionar departamento
-                                </h5>
-                                <h6 class="card-subtitle">
-                                    Revisar evidencias por departamento
-                                </h6>
-                                <div class="col-md-10">
-                                    <select class="form-control form-control-line txtChoose">
-                                        <option value="" selected>Jefatura</option>
-                                        <option value="" selected>Funcionario</option>
-                                        <option value="" selected>Director administrativo</option>
-                                        <option value="" selected>Encargado de control</option>
-                                        <option value="" selected>Encargado de planilla</option>
-                                        <option disabled selected hidden>Seleccionar departamento </option>
-                                    </select>
+                        <form asp-controller="Jefatura" asp-action="obtenerEvidencias">
+                            <div class="row">
+                                <div class="carta">
+                                    <h5 class="card-title">
+                                        Seleccionar funcionario
+                                    </h5>
+                                    <h6 class="card-subtitle">
+                                        Revisar evidencias por Funcionario
+                                    </h6>
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                            <select asp-for="@Model[0].funcionarios[0].email" class="form-control form-control-line txtChoose">
+                                                @foreach (Persona p in Model[0].funcionarios)
+                                                {
+                                                    <option value="@p.email" selected>@p.nombreCompleto</option>
+                                                }
+                                                <option disabled selected hidden>Seleccionar funcionario </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="text-end upgrade-btn">
+                                                <button class="btn text-white btnEstablecer">Buscar</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="carta">
-                                <h5 class="card-title">
-                                    Seleccionar funcionario
-                                </h5>
-                                <h6 class="card-subtitle">
-                                    Revisar evidencias por Funcionario
-                                </h6>
-                                <div class="col-md-4">
-                                    <select class="form-control form-control-line txtChoose">
-                                        <option value="" selected>Yaresly Martinez Zuñiga</option>
-                                        <option value="" selected>Carlos Pereira Coto</option>
-                                        <option value="" selected>Rafael Martinez Quesada</option>
-                                        <option disabled selected hidden>Seleccionar funcionario </option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -186,261 +177,160 @@
                         <h5 class="card-title">Evidencias nuevas </h5>
                         <!-- Carrusel de Cartas-->
                         <div class="row">
-                            <div id="inam" class="carousel slide" data-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <div class="container">
-                                            <div class="row">
 
-                                                <div class="col-sm-12 col-lg-4">
-                                                    <a id="tarea1" class="pointer" onclick="modalPendiente('tarea1')">
-                                                        <div class="card carta" style="width: 180px;margin: auto;">
-                                                            <img src="~/img/tarea.png" class="imgcard">
-                                                            <h4 class="card-title titulo">Tarea</h4>
-                                                            <p class="card-text desc">00001</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
+                            @{
 
-                                                <div class="col-sm-12 col-lg-4">
-                                                    <a id="tarea2" class="pointer" onclick="modalPendiente('tarea2')">
-
-                                                        <div class="card carta" style="width: 180px;margin: auto;">
-                                                            <img src="~/img/tarea.png" class="imgcard">
-                                                            <h4 class="card-title titulo">Tarea</h4>
-                                                            <p class="card-text desc">00002</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-                                                <div class="col-sm-12 col-lg-4">
-                                                    <a id="tarea3" class="pointer" onclick="modalPendiente('tarea3')">
-
-                                                        <div class="card carta" style="width: 180px;margin: auto;">
-                                                            <img src="~/img/tarea.png" class="imgcard">
-                                                            <h4 class="card-title titulo">Tarea</h4>
-                                                            <p class="card-text desc">00003</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-
-                                            </div>
-
-                                        </div>
-
-
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-sm-12 col-lg-4">
-                                                    <a id="tarea4" class="pointer" onclick="modalPendiente('tarea4')">
-
-                                                        <div class="card carta" style="width: 180px;margin: auto;">
-                                                            <img src="~/img/tarea.png" class="imgcard">
-                                                            <h4 class="card-title titulo">Tarea</h4>
-                                                            <p class="card-text desc">00004</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-                                                <div class="col-sm-12 col-lg-4">
-                                                    <a id="tarea5" class="pointer" onclick="modalPendiente('tarea5')">
-
-                                                        <div class="card carta" style="width: 180px;margin: auto;">
-                                                            <img src="~/img/tarea.png" class="imgcard">
-                                                            <h4 class="card-title titulo">Tarea</h4>
-                                                            <p class="card-text desc">00005</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-                                                <div class="col-sm-12 col-lg-4">
-                                                    <a id="tarea6" class="pointer" onclick="modalPendiente('tarea6')">
-
-                                                        <div class="card carta" style="width: 180px;margin: auto;">
-                                                            <img src="~/img/tarea.png" class="imgcard">
-                                                            <h4 class="card-title titulo">Tarea</h4>
-                                                            <p class="card-text desc">00006</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-                                                <!-- <div class="col-sm-12 col-lg-4">
-                                                    <div class="card" style="width: 180px;margin: auto;">
-                                                        <img src="img/tarea.png" class="imgcard">
-                                                        <div class="card-body">
-                                                            <h4 class="card-title">Solicitud</h4>
-                                                            <p class="card-text">00006</p>
-
-
-                                                            <div class="modal fade" id="myModal">
-                                                                <div class="modal-dialog">
-                                                                    <div class="modal-content">
-
-                                                                        <div class="modal-header">
-                                                                            <h4 class="modal-title">Modal Heading</h4>
-                                                                            <button type="button" class="close"
-                                                                                data-dismiss="modal">&times;</button>
-                                                                        </div>
-
-                                                                        <div class="modal-body">
-                                                                            Modal body..
-                                                                        </div>
-
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-danger"
-                                                                                data-dismiss="modal">Close</button>
-                                                                        </div>
-
+                                if (Model[0].Motivo != null)
+                                {
+                                    <div id="inam" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        @for (int i = 0; i < Model.Count; i++)
+                                                        {
+                                                            <div class="col-sm-12 col-lg-4">
+                                                                <a id="@i" class="pointer" onclick="modalEvidencias('@i', '@Model[i].idEvidencia', '@Model[i].Motivo', '@Model[i].HoraInicial', '@Model[i].HoraFinal', '@Model[i].RutaDocumento', '@Model[i].Estado', '@Model[i].idPersona')">
+                                                                    <div class="card carta" style="width: 180px;margin: auto;">
+                                                                        <img src="~/img/tarea.png" class="imgcard">
+                                                                        <h4 class="card-title titulo">Solicitud</h4>
+                                                                        <p class="card-text desc">@Model[i].idEvidencia</p>
                                                                     </div>
-                                                                </div>
+                                                                </a>
                                                             </div>
 
-                                                        </div>
-
+                                                            if (i == 2)
+                                                            {
+                                                                break;
+                                                            }
+                                                        }
                                                     </div>
-                                                </div> -->
+                                                </div>
+                                            </div>
 
+
+                                            <div class="carousel-item">
+                                                <div class="container">
+                                                    <div class="row">
+
+                                                        @for (int i = 3; i < Model.Count; i++)
+                                                        {
+                                                            <div class="col-sm-12 col-lg-4">
+                                                                <a id="@i" class="pointer" onclick="modalEvidencias('@i', '@Model[i].idEvidencia', '@Model[i].Motivo', '@Model[i].HoraInicial', '@Model[i].HoraFinal', '@Model[i].RutaDocumento', '@Model[i].Estado', '@Model[i].idPersona')">
+                                                                    <div class="card carta" style="width: 180px;margin: auto;">
+                                                                        <img src="~/img/tarea.png" class="imgcard">
+                                                                        <h4 class="card-title titulo">Solicitud</h4>
+                                                                        <p class="card-text desc">@Model[i].idEvidencia</p>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+
+                                                            if (i == 5)
+                                                            {
+                                                                break;
+                                                            }
+                                                        }
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
 
+                                        <a href="#inam" class="prev" data-slide="prev">&#10094;</a>
+                                        <a href="#inam" class="next" data-slide="next">&#10095;</a>
 
                                     </div>
+                                }
+                                else
+                                {
+                                    <center>
+                                        <h5>Seleccione un funcionario / El funcionario no tiene evidencias</h5>
+                                    </center>
+                                }
 
-                                </div>
-                                <a href="#inam" class="prev" data-slide="prev">&#10094;</a>
-                                <a href="#inam" class="next" data-slide="next">&#10095;</a>
+                            }
 
-                            </div>
 
                         </div>
                         <!-- fin Carrusel de Cartas-->
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <div class="card">
-                    <div class="card-body">
+        <div id="myModal" class="modalE">
+            
+            <div class="modal-contentE">
+                <span class="close">&times;</span>
+                <h3 id="soli" va></h3>
+                <div class="carta3J">
+                    <h4 class="card-title titulo2">Motivo de la tarea</h4>
+                    <div class="form-group row">
+                        <div class="col-md-12 row">
+                            <input id="txtmotivo" type="text"
+                                   class="form-control form-control-line txtMotivo2" readonly />
+                        </div>
+                    </div>
+                </div>
+                <div class="carta3J">
+                    <div class="form-group row">
+                        <div class="col-md-5 row">
+                            <h4 class="card-title">Entrada</h4>
+                            <input id="txtentrada" type="text"
+                                   class="form-control form-control-line txtMotivo2" readonly />
+                        </div>
+                        <div class="col-md-5 row carta4J">
+                            <h4 class="card-title">Salida</h4>
+                            <input id="txtsalida" type="text"
+                                   class="form-control form-control-line txtMotivo2" readonly />
+                        </div>
+                    </div>
+                </div>
 
-                        <div class="Tablacarta">
-                            <h5 class="card-title">
-                                Tabla de historial de evidencias
-                            </h5>
-                            <h6 class="card-subtitle">
-                                Se muestra la tabla de las evidencias recibidas
-                            </h6>
-                            <div class="col-md-12">
-                                <div class="table-responsive">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr class="encabezado">
-                                                <th scope="col">Evidencia</th>
-                                                <th scope="col">Nombre</th>
-                                                <th scope="col">Tarea Realizada</th>
-                                                <th scope="col">Estado</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>00001</td>
-                                                <td>Carlos Pereira Coto</td>
-                                                <td>Control de planilla</td>
-                                                <td>Aceptada</td>
+                <div class="carta3J">
+                    <div class="form-group row">
+                        <div class="col-md-12 row">
+                            <h4 class="card-title titulo2">Estado</h4>
+                            <input id="txtEstado" type="text"
+                                   class="form-control form-control-line txtMotivo2" readonly />
+                        </div>
+                    </div>
+                </div>
 
-                                            </tr>
-                                            <tr>
-                                                <td>00002</td>
-                                                <td>Yaresly Martinez</td>
-                                                <td>Migracion de base datos</td>
-                                                <td>Pendiente</td>
+                <div class="carta3J">
+                    <div class="form-group row">
+                        <form class="row" asp-controller="Jefatura" asp-action="DescargarArchivo">
+                            <div class="col-md-8 row">
+                                <h4 class="card-title">Evidencia</h4>
+                                <input asp-for="@Model[0].RutaDocumento" id="txtArchivo" type="text"
+                                       class="form-control form-control-line txtMotivo2" readonly />
+                            </div>
+                            <div class="col-md-4 row carta4J">
+                                <button class="btn text-white btnEstablecer3Actividades">Descargar</button>
+                            </div>
+                        </form>
+                            
+                    </div>
+                </div>
 
-                                            </tr>
-                                            <tr>
-                                                <td>00003</td>
-                                                <td>Rafale Martinez</td>
-                                                <td>Planificar las capacitaciones</td>
-                                                <td>Rechazada</td>
-
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                <div class="carta2">
+                    <form asp-controller="Jefatura" asp-action="Evidencias">
+                        <input asp-for="@Model[0].idEvidencia" id="idEvidencia" style="display:none" />
+                        <input asp-for="@Model[0].idPersona" id="idPersona" style="display:none" />
+                        <div class="form-group row">
+                            <div class="col-md-5 row carta3J">
+                                <div class="text-end upgrade-btn">
+                                    <button class="btn text-white btnEstablecer3Actividades">Aceptar</button>
+                                </div>
+                            </div>
+                            <div class="col-md-5 row carta3J">
+                                <div class="text-end upgrade-btn">
+                                    <a onclick="cerrarModal()"
+                                       class="btn text-white btnEstablecer4">Rechazar</a>
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-
-                </div>
-                <!-- fin Solicitud tareas-->
-
-
-
-
-            </div>
-
-        </div>
-
-        <div id="myModal2" class="modal">
-
-            <!-- Modal content -->
-            <div class="modal-content">
-                <span class="closeN">&times;</span>
-                <h3>Actividad #1</h3>
-                <div class="carta2">
-                    <h4 class="card-title titulo2">Motivo de la Solicitud</h4>
-                    <div class="form-group row">
-                        <div class="col-md-12 row">
-                            <input type="text" value="Realizar pedidos del mes Agosto"
-                                   class="form-control form-control-line txtMotivo3" readonly />
-                        </div>
-                    </div>
-                </div>
-                <div class="carta2">
-                    <div class="form-group row">
-                        <div class="col-md-5 row">
-                            <h4 class="card-title titulo3">Entrada</h4>
-                            <input type="text" placeholder="08:00" class="form-control form-control-line txtMotivo4"
-                                   readonly />
-                        </div>
-                        <div class="col-md-5 row carta3">
-                            <h4 class="card-title titulo3">Salida</h4>
-                            <input type="text" placeholder="17:00" class="form-control form-control-line txtMotivo4"
-                                   readonly />
-                        </div>
-                        <!-- <div class="col-md-1">
-                            <div class="text-end upgrade-btn">
-                                <a onclick="definirCantidadDigitos()"
-                                    class="btn text-white btnEstablecer">Aprobar</a>
-                            </div>
-                        </div> -->
-                    </div>
-                </div>
-
-                <div class="carta2">
-                    <div class="form-group row">
-                        <div class="col-md-5 row">
-                            <h4 class="card-title titulo3">Total de horas</h4>
-                            <input type="text" placeholder="8" class="form-control form-control-line txtMotivo4"
-                                   readonly />
-                        </div>
-                        <div class="col-md-5 row carta3">
-                            <h4 class="card-title titulo3">Fecha</h4>
-                            <input type="text" value="17/08/2021" class="form-control form-control-line txtMotivo4"
-                                   readonly />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carta2">
-                    <div class="form-group row">
-                        <div class="col-md-5 row carta3">
-                            <div class="text-end upgrade-btn">
-                                <a onclick="cerrarModalActividades2()" class="btn text-white btnCerrar">Cerrar</a>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
 
@@ -452,7 +342,7 @@
         </footer>
     </div>
 
-    <script src="~/js/modalTareas.js"></script>
+    <script src="~/js/modalEvidencias.js"></script>
 
 
 </body>

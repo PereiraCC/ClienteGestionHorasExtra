@@ -1,4 +1,4 @@
-﻿
+﻿@model ModelCrearEvidencia
 
 <!DOCTYPE html>
 <html>
@@ -156,89 +156,54 @@
                         <!-- Carrusel de Cartas-->
                         <div class="row">
                             <div id="inam" class="carousel slide" data-ride="carousel">
+
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <div class="container">
                                             <div class="row">
+                                                @for (int i = 0; i < Model.tareas.Count; i++)
+                                                {
+                                                    <div class="col-sm-12 col-lg-4">
+                                                        <a id="@i" class="pointer" onclick="modalTarea('@i', '@Model.tareas[i].idSolicitud', '@Model.tareas[i].Motivo', '@Model.tareas[i].entrada', '@Model.tareas[i].Salida', '@Model.tareas[i].Horas', '@Model.tareas[i].Fecha')">
+                                                            <div class="card carta" style="width: 180px;margin: auto;">
+                                                                <img src="~/img/tarea.png" class="imgcard">
+                                                                <h4 class="card-title titulo">Solicitud</h4>
+                                                                <p class="card-text desc">@Model.tareas[i].idSolicitud</p>
+                                                            </div>
+                                                        </a>
+                                                    </div>
 
-                                                <div class="col-sm-12 col-lg-4">
-                                                    <a id="tarea1" class="pointer" onclick="modalPendiente('tarea1')">
-                                                        <div class="card carta" style="width: 180px;margin: auto;">
-                                                            <img src="~/img/tarea.png" class="imgcard">
-                                                            <h4 class="card-title titulo">Tarea</h4>
-                                                            <p class="card-text desc">00001</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-                                                <div class="col-sm-12 col-lg-4">
-                                                    <a id="tarea2" class="pointer" onclick="modalPendiente('tarea2')">
-
-                                                        <div class="card carta" style="width: 180px;margin: auto;">
-                                                            <img src="~/img/tarea.png" class="imgcard">
-                                                            <h4 class="card-title titulo">Tarea</h4>
-                                                            <p class="card-text desc">00002</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-                                                <div class="col-sm-12 col-lg-4">
-                                                    <a id="tarea3" class="pointer" onclick="modalPendiente('tarea3')">
-
-                                                        <div class="card carta" style="width: 180px;margin: auto;">
-                                                            <img src="~/img/tarea.png" class="imgcard">
-                                                            <h4 class="card-title titulo">Tarea</h4>
-                                                            <p class="card-text desc">00003</p>
-                                                        </div>
-                                                        <a id="tarea1" class="pointer"
-                                                           onclick="modalPendiente('tarea1')">
-
-                                                </div>
-
-
+                                                    if (i == 2)
+                                                    {
+                                                        break;
+                                                    }
+                                                }
                                             </div>
-
                                         </div>
-
-
                                     </div>
+
+
                                     <div class="carousel-item">
                                         <div class="container">
                                             <div class="row">
-                                                <div class="col-sm-12 col-lg-4">
-                                                    <a id="tarea4" class="pointer" onclick="modalPendiente('tarea4')">
 
-                                                        <div class="card carta" style="width: 180px;margin: auto;">
-                                                            <img src="~/img/tarea.png" class="imgcard">
-                                                            <h4 class="card-title titulo">Tarea</h4>
-                                                            <p class="card-text desc">00004</p>
-                                                        </div>
-                                                    </a>
+                                                @for (int i = 3; i < Model.tareas.Count; i++)
+                                                {
+                                                    <div class="col-sm-12 col-lg-4">
+                                                        <a id="@i" class="pointer" onclick="modalTarea('@i', '@Model.tareas[i].idSolicitud', '@Model.tareas[i].Motivo', '@Model.tareas[i].entrada', '@Model.tareas[i].Salida', '@Model.tareas[i].Horas', '@Model.tareas[i].Fecha')">
+                                                            <div class="card carta" style="width: 180px;margin: auto;">
+                                                                <img src="~/img/tarea.png" class="imgcard">
+                                                                <h4 class="card-title titulo">Solicitud</h4>
+                                                                <p class="card-text desc">@Model.tareas[i].idSolicitud</p>
+                                                            </div>
+                                                        </a>
+                                                    </div>
 
-                                                </div>
-
-                                                <div class="col-sm-12 col-lg-4">
-                                                    <a id="tarea5" class="pointer" onclick="modalPendiente('tarea5')">
-
-                                                        <div class="card carta" style="width: 180px;margin: auto;">
-                                                            <img src="~/img/tarea.png" class="imgcard">
-                                                            <h4 class="card-title titulo">Tarea</h4>
-                                                            <p class="card-text desc">00005</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-                                                <div class="col-sm-12 col-lg-4">
-                                                    <a id="tarea6" class="pointer" onclick="modalPendiente('tarea6')">
-
-                                                        <div class="card carta" style="width: 180px;margin: auto;">
-                                                            <img src="~/img/tarea.png" class="imgcard">
-                                                            <h4 class="card-title titulo">Tarea</h4>
-                                                            <p class="card-text desc">00006</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
+                                                    if (i == 5)
+                                                    {
+                                                        break;
+                                                    }
+                                                }
                                             </div>
 
                                         </div>
@@ -261,134 +226,135 @@
             <!-- Actividades pendientes-->
             <div class="col-12" style="width: 1080px;">
                 <div class="card " style="height: 300px;">
-                    <div class="card-body">
 
-                        <div class="row">
-                            <div class="carta2">
-                                <h5 class="card-title">
-                                    Tiempo de la actividad
-                                </h5>
-                                <!-- <h6 class="card-subtitle">
-                                    Especifique el Tiempo en que realizo la actividad
-                                </h6> -->
-                                <div class="row">
-                                    <p class="labelHora">Hora inicial</p>
-                                    <p class="labelHora">Hora final</p>
-                                </div>
-                                <div class="row">
-                                    <input id="txtCantidad" type="time" value="08:00" min="08:00" max="21:00"
-                                           class="form-control form-control-line txtHora" />
-                                    <input id="txtCantidad" type="time" value="08:00" min="08:00" max="21:00"
-                                           class="form-control form-control-line txtHora" />
+                    <form asp-controller="Funcionarios" asp-action="Evidencias">
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="carta2">
+                                    <h5 class="card-title">
+                                        Tiempo de la actividad
+                                    </h5>
+                                    <!-- <h6 class="card-subtitle">
+                                        Especifique el Tiempo en que realizo la actividad
+                                    </h6> -->
+                                    <div class="row">
+                                        <p class="labelHora">Hora inicial</p>
+                                        <p class="labelHora">Hora final</p>
+                                    </div>
+                                    <div class="row">
+                                        <input asp-for="HoraInicial" id="txtCantidad" type="time" value="08:00" min="08:00" max="21:00"
+                                               class="form-control form-control-line txtHora" />
+                                        <input asp-for="HoraFinal" id="txtCantidad" type="time" value="08:00" min="08:00" max="21:00"
+                                               class="form-control form-control-line txtHora" />
+                                    </div>
+
                                 </div>
 
+
+                                <div class="carta2">
+                                    <h5 class="card-title">
+                                        Nombre de la actividad
+                                    </h5>
+                                    <h6 class="card-subtitle">
+                                        Seleccione una actividad para cargar el nombre
+                                    </h6>
+                                    <div class="form-group row">
+                                        <div class="col-md-10 row">
+                                            <input asp-for="Motivo" id="txtCodigo" type="text" placeholder="Nombre Actividad"
+                                                   class="form-control form-control-line txtMotivo" />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
 
+
+                        <div class="card-body">
 
                             <div class="carta2">
                                 <h5 class="card-title">
-                                    Nombre de la actividad
+                                    Evidencia
                                 </h5>
                                 <h6 class="card-subtitle">
-                                    Seleccione una actividad para cargar el nombre
+                                    Adjuntar evidencia
                                 </h6>
                                 <div class="form-group row">
                                     <div class="col-md-10 row">
-                                        <input id="txtCodigo" type="text" placeholder="Nombre Actividad"
-                                               class="form-control form-control-line txtMotivo" />
+                                        <input asp-for="RutaDocumento" id="txtEvidencia" type="file" placeholder="Evidencia"
+                                               class="form-control form-control-line txtChoose1" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="text-end upgrade-btn">
+                                            <button class="btn text-white btnEstablecer">Enviar</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-
-                    <div class="card-body">
-
-                        <div class="carta2">
-                            <h5 class="card-title">
-                                Evidencia
-                            </h5>
-                            <h6 class="card-subtitle">
-                                Adjuntar evidencia
-                            </h6>
-                            <div class="form-group row">
-                                <div class="col-md-10 row">
-                                    <input id="txtEvidencia" type="file" placeholder="Evidencia"
-                                           class="form-control form-control-line txtChoose1" />
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="text-end upgrade-btn">
-                                        <a onclick="definirCantidadDigitos()"
-                                           class="btn text-white btnEstablecer">Enviar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    </form>
+                    
                 </div>
             </div>
             <!--  fin Actividades pendientes-->
 
         </div>
 
-        <div id="myModal2" class="modal">
-
-            <!-- Modal content -->
+        <div id="myModal" class="modal">
             <div class="modal-content">
-                <span class="closeN">&times;</span>
-                <h3>Actividad #1</h3>
-                <div class="carta2">
+                <span class="close">&times;</span>
+                <h3 id="soli" va></h3>
+                <div class="carta3">
                     <h4 class="card-title titulo2">Motivo de la Solicitud</h4>
                     <div class="form-group row">
                         <div class="col-md-12 row">
-                            <input type="text" value="Realizar pedidos del mes Agosto"
-                                   class="form-control form-control-line txtMotivo3" readonly />
+                            <input id="txtmotivo" type="text"
+                                   class="form-control form-control-line txtMotivo2" readonly />
                         </div>
                     </div>
                 </div>
-                <div class="carta2">
+                <div class="carta3">
                     <div class="form-group row">
                         <div class="col-md-5 row">
-                            <h4 class="card-title titulo3">Entrada</h4>
-                            <input type="text" placeholder="08:00" class="form-control form-control-line txtMotivo4"
-                                   readonly />
+                            <h4 class="card-title">Entrada</h4>
+                            <input id="txtentrada" type="text"
+                                   class="form-control form-control-line txtMotivo2" readonly />
                         </div>
+                        <div class="col-md-5 row carta4">
+                            <h4 class="card-title">Salida</h4>
+                            <input id="txtsalida" type="text"
+                                   class="form-control form-control-line txtMotivo2" readonly />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carta3">
+                    <div class="form-group row">
+                        <div class="col-md-5 row">
+                            <h4 class="card-title titulo2">Total de horas</h4>
+                            <input id="txtHoras" type="text"
+                                   class="form-control form-control-line txtMotivo2" readonly />
+                        </div>
+                        <div class="col-md-5 row carta4">
+                            <h4 class="card-title titulo2">Fecha</h4>
+                            <input id="txtfecha" type="text"
+                                   class="form-control form-control-line txtMotivo2" readonly />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carta2">
+                    <div class="form-group row">
                         <div class="col-md-5 row carta3">
-                            <h4 class="card-title titulo3">Salida</h4>
-                            <input type="text" placeholder="17:00" class="form-control form-control-line txtMotivo4"
-                                   readonly />
-                        </div>
-                        <!-- <div class="col-md-1">
                             <div class="text-end upgrade-btn">
-                                <a onclick="definirCantidadDigitos()"
-                                    class="btn text-white btnEstablecer">Aprobar</a>
+                                <a onclick="seleccionarTarea()"
+                                   class="btn text-white btnEstablecer3Actividades">Seleccionar</a>
                             </div>
-                        </div> -->
-                    </div>
-                </div>
-
-                <div class="carta2">
-                    <div class="form-group row">
-                        <div class="col-md-5 row">
-                            <h4 class="card-title titulo3">Total de horas</h4>
-                            <input type="text" placeholder="8" class="form-control form-control-line txtMotivo4"
-                                   readonly />
                         </div>
-                        <div class="col-md-5 row carta3">
-                            <h4 class="card-title titulo3">Fecha</h4>
-                            <input type="text" value="17/08/2021" class="form-control form-control-line txtMotivo4"
-                                   readonly />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carta2">
-                    <div class="form-group row">
                         <div class="col-md-5 row carta3">
                             <div class="text-end upgrade-btn">
-                                <a onclick="cerrarModalActividades2()" class="btn text-white btnCerrar">Cerrar</a>
+                                <a onclick="cerrarModal()"
+                                   class="btn text-white btnEstablecer4">Rechazar</a>
                             </div>
                         </div>
                     </div>

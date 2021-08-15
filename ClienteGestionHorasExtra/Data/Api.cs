@@ -348,6 +348,53 @@ namespace ClienteGestionHorasExtra.Data
 
         }
 
+        public List<ModelEvidencias> ObtenerEvidenciasFuncionario(string email, string Base2)
+        {
+            try
+            {
+                List<ModelEvidencias> lista = null;
+
+                using (var client = new HttpClient())
+                {
+                    var task = Task.Run(async () =>
+                    {
+                        return await client.GetAsync(URL_API + Base2 + "?email=" + email);
+                    }
+                    );
+                    HttpResponseMessage message = task.Result;
+                    if (message.StatusCode == System.Net.HttpStatusCode.InternalServerError)
+                    {
+                        var task1 = Task<string>.Run(async () =>
+                        {
+                            return await message.Content.ReadAsStringAsync();
+                        });
+                        string mens = task1.Result;
+                        ModelError error = JsonConvert.DeserializeObject<ModelError>(mens);
+                        return lista;
+
+                    }
+                    else
+                    {
+                        var task2 = Task<string>.Run(async () =>
+                        {
+                            return await message.Content.ReadAsStringAsync();
+                        });
+                        string mens = task2.Result;
+                        lista = JsonConvert.DeserializeObject<List<ModelEvidencias>>(mens);
+
+                    }
+                    return lista;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+
         public string AceptarSolicitud(string motivo, string Base2)
         {
             try
@@ -358,6 +405,52 @@ namespace ClienteGestionHorasExtra.Data
                     {
                         return await client.PostAsync(
                             URL_API + Base2 + "?motivo=" + motivo, null);
+                    }
+                    );
+                    HttpResponseMessage message = task.Result;
+                    if (message.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        return "1";
+                    }
+                    else if (message.StatusCode == System.Net.HttpStatusCode.Conflict)
+                    {
+                        return "Ya hay un registro con esa informacion";
+                    }
+                    else if (message.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    {
+                        return "No se encontro el recurso";
+                    }
+                    else
+                    {
+                        var task2 = Task<string>.Run(async () =>
+                        {
+                            return await message.Content.ReadAsStringAsync();
+                        });
+                        string mens = task2.Result;
+                        ModelError error = JsonConvert.DeserializeObject<ModelError>(mens);
+                        return error.Exceptionmessage;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+
+        public string AceptarEvidencia(int idEvidencia, string Base2)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var task = Task.Run(async () =>
+                    {
+                        return await client.PostAsync(
+                            URL_API + Base2 + "?idEvidencia=" + idEvidencia, null);
                     }
                     );
                     HttpResponseMessage message = task.Result;

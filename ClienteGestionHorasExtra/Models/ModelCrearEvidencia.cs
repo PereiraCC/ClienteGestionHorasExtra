@@ -6,17 +6,14 @@ using System.Threading.Tasks;
 
 namespace ClienteGestionHorasExtra.Models
 {
-    public class Persona
+    public class ModelCrearEvidencia
     {
-        public int idPersona { get; set; }
+        public string RutaDocumento { get; set; }
+        public System.DateTime HoraInicial { get; set; }
+        public System.DateTime HoraFinal { get; set; }
+        public string Motivo { get; set; }
 
-        public string nombreCompleto { get; set; }
-
-        public string email { get; set; }
-
-        public string pass { get; set; }
-
-        public string departamento { get; set; }
+        public List<ModelTarea> tareas { get; set; }
 
         public string ToJsonString()
         {

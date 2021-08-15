@@ -62,9 +62,21 @@ namespace ClienteGestionHorasExtra.Controllers
             return RedirectToAction("FormulariosReportes");
         }
 
+        [HttpGet]
         public IActionResult Evidencias()
         {
-            return View();
+            return View( new ModelCrearEvidencia()
+            {
+                tareas = api.ObtenerTareas(Usuario.email, "/Tareas")
+            });
+        }
+
+        [HttpPost]
+        public IActionResult Evidencias(ModelCrearEvidencia evidencia)
+        {
+            evidencia.RutaDocumento = "/Archivos/Evidencias/" + evidencia.RutaDocumento;
+            string res = api.ConnectPOST(evidencia.ToJsonString(), "/Evidencias");
+            return RedirectToAction("Evidencias");
         }
     }
 }

@@ -1,33 +1,4 @@
 
-function modalTarea(nombre, titulo, motivo, entrada, salida, horas, fecha) {
-
-    //const txtCodigo = document.getElementById("txtCodigo");
-    //txtCodigo.value = "";
-
-    const modal = document.getElementById("myModal");
-    var btn = document.getElementById(nombre);
-    const span = document.getElementsByClassName("close")[0];
-
-    btn.onclick = () => modal.style.display = "block";
-
-    span.onclick = () => modal.style.display = "none";
-
-    document.getElementById("soli").innerText = "Solicitud #" + titulo;
-    document.getElementById("txtmotivo").value = motivo;
-    document.getElementById("txtentrada").value = entrada;
-    document.getElementById("txtsalida").value = salida;
-    document.getElementById("txtHoras").value = horas;
-    document.getElementById("txtfecha").value = fecha;
-
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            
-            modal.style.display = "none";
-        }
-    }
-  
-
-}
 
 function cerrarModal() {
   const modal = document.getElementById("myModal");
@@ -45,6 +16,40 @@ function seleccionarTarea() {
     const span = document.getElementsByClassName("btnEstablecer3Actividades")[0];
 
     span.onclick = () => modal.style.display = "none";
+}
+
+function modalEvidencias(nombre, titulo, motivo, entrada, salida, ruta, estado, idPersona) {
+
+    //const txtCodigo = document.getElementById("txtCodigo");
+    //txtCodigo.value = "";
+
+    const modal = document.getElementById("myModal");
+    var btn = document.getElementById(nombre);
+    const span = document.getElementsByClassName("close")[0];
+    let evidencia = document.getElementById("txtArchivo");
+
+    btn.onclick = () => modal.style.display = "block";
+
+    span.onclick = () => modal.style.display = "none";
+
+    document.getElementById("soli").innerText = "Solicitud #" + titulo;
+    document.getElementById("idEvidencia").value = titulo;
+    document.getElementById("txtmotivo").value = motivo;
+    document.getElementById("txtentrada").value = entrada;
+    document.getElementById("txtsalida").value = salida;
+    evidencia.value = ruta
+    //evidencia.setAttribute("href", ruta);
+    document.getElementById("txtEstado").value = (estado == true) ? "Aprobada" : "Pendiente | Rechazada";
+    document.getElementById("idPersona").value = idPersona;
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+
+            modal.style.display = "none";
+        }
+    }
+
+
 }
 
 //function modalPendiente(nombre) {
