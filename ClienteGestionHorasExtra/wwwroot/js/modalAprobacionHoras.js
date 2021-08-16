@@ -1,6 +1,6 @@
 
 
-function modalAceptar(nombre) {
+function modalAceptar(nombre, email, idFormulario) {
 
   const modal = document.getElementById("myModal");
   var btn = document.getElementById(nombre);
@@ -8,7 +8,11 @@ function modalAceptar(nombre) {
 
   btn.onclick = () => modal.style.display = "block";
 
-  span.onclick = () => modal.style.display = "none";
+    span.onclick = () => modal.style.display = "none";
+
+    document.getElementById("idEmail").value = email;
+    document.getElementById("idFormularioAvalado").value = idFormulario;
+
 
   window.onclick = function(event) {
     if (event.target == modal) {

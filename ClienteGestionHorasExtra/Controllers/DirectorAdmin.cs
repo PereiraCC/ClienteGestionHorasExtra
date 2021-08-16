@@ -19,7 +19,7 @@ namespace ClienteGestionHorasExtra.Controllers
 
             if (f.Email != null)
             {
-                formularios = api.ObtenerFormulariosAvalados(f.Email, "/FormulariosAvalados");
+                formularios = api.ObtenerFormulariosAvaladosPendientes(f.Email, "/FormulariosAvalados/obtenerFormulariosAvaladosPendientes");
                 if (formularios.Count >= 1)
                 {
                     formularios[0].funcionarios = api.ObtenerFuncionarios("/Personas/GetFuncionarios");
@@ -54,9 +54,10 @@ namespace ClienteGestionHorasExtra.Controllers
         [HttpPost]
         public IActionResult AprobacionHoras(List<ModelFormularioAvalado> f)
         {
+            string res = api.ConnectPOST(f[0].formularioTiempo.ToJsonString(), "/FormulariosTiempo");
             return RedirectToAction("AprobacionHoras", new ModelFormularioAvalado
             {
-                Email = f[0].funcionarios[0].email
+                Email = f[0].Email
             });
         }
     }

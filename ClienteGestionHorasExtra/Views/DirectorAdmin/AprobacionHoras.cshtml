@@ -197,8 +197,8 @@
                                                                 <td><a href="@f.RutaArchivo" target="_blank">Archivo</a></td>
                                                                 <td>
                                                                     <div class="row">
-                                                                        <a id="@f.idFormularioAvalado" onclick="modalAceptar('@f.idFormularioAvalado')" class="btn fa fa-check-square accion"></a>
-                                                                        <a id="@f.idFormularioAvalado+1" onclick="modalARechazar('@f.idFormularioAvalado+1')" class="btn fa fa-trash-alt accion"></a>
+                                                                        <a id="@f.idFormularioAvalado" onclick="modalAceptar('@f.idFormularioAvalado', '@f.Email', '@f.idFormularioAvalado')" class="btn fa fa-check-square accion"></a>
+                                                                        <a id="@f.idFormularioAvalado+1" onclick="modalARechazar('@f.idFormularioAvalado+1', '@f.Email', '@f.idFormularioAvalado')" class="btn fa fa-trash-alt accion"></a>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -227,32 +227,37 @@
 
             <!-- Modal content -->
             <div class="modal-content">
-                <span class="close">&times;</span>
-                <h3>Aprobar formulario</h3>
-                <div class="carta">
-                    <h4 class="card-title">Total de Horas validas</h4>
-                    <div class="form-group row">
-                        <div class="col-md-5 row">
-                            <input type="number" placeholder="Horas" min="1" max="99"
-                                   class="form-control form-control-line txtMotivo" />
-                        </div>
-                    </div>
-                </div>
-                <div class="carta">
-                    <h4 class="card-title">Quincena</h4>
-                    <div class="form-group row">
-                        <div class="col-md-5 row">
-                            <input type="text" placeholder="Quincena"
-                                   class="form-control form-control-line txtMotivo" />
-                        </div>
-                        <div class="col-md-1">
-                            <div class="text-end upgrade-btn">
-                                <a onclick="definirCantidadDigitos()"
-                                   class="btn text-white btnEstablecer">Aprobar</a>
+
+                <form asp-controller="DirectorAdmin" asp-action="AprobacionHoras">
+                    <span class="close">&times;</span>
+                    <input asp-for="@Model[0].Email" id="idEmail" style="display:none" />
+                    <input asp-for="@Model[0].formularioTiempo.idFormularioAvalado" id="idFormularioAvalado" style="display:none" />
+                    <h3>Aprobar formulario</h3>
+                    <div class="carta">
+                        <h4 class="card-title">Total de Horas validas</h4>
+                        <div class="form-group row">
+                            <div class="col-md-5 row">
+                                <input asp-for="@Model[0].formularioTiempo.Horas" type="number" placeholder="Horas" min="1" max="99"
+                                       class="form-control form-control-line txtMotivo" />
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="carta">
+                        <h4 class="card-title">Quincena</h4>
+                        <div class="form-group row">
+                            <div class="col-md-5 row">
+                                <input asp-for="@Model[0].formularioTiempo.Quincena" type="text" placeholder="Quincena"
+                                       class="form-control form-control-line txtMotivo" />
+                            </div>
+                            <div class="col-md-1">
+                                <div class="text-end upgrade-btn">
+                                    <button class="btn text-white btnEstablecer">Aprobar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                
             </div>
 
         </div>

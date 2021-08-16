@@ -27,5 +27,7 @@ namespace ClienteGestionHorasExtra.Models
 
         public List<Persona> funcionarios { get; set; }
 
+        public ModelFormularioTiempo formularioTiempo { get; set; }
+
     }
 }
