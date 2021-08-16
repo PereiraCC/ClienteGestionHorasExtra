@@ -1,4 +1,4 @@
-﻿
+﻿@model List<ModelFormularioTiempo>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -129,6 +129,41 @@
             </div>
         </div>
 
+        <div class="col-12" style="width: 1080px;">
+            <div class="card " style="height: 150px;">
+                <div class="card-body">
+                    <form asp-controller="ControlTiempo" asp-action="obtenerFormularios">
+                        <div class="row">
+                            <div class="carta">
+                                <h5 class="card-title">
+                                    Seleccionar funcionario
+                                </h5>
+                                <h6 class="card-subtitle">
+                                    Revisar formularios de tiempo por funcionario
+                                </h6>
+                                <div class="form-group row">
+                                    <div class="col-md-10">
+                                        <select asp-for="@Model[0].Email" class="form-control form-control-line txtChoose">
+                                            @foreach (Persona p in Model[0].funcionarios)
+                                            {
+                                                <option value="@p.email" selected>@p.nombreCompleto</option>
+                                            }
+                                            <option disabled selected hidden>Seleccionar funcionario </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="text-end upgrade-btn ">
+                                            <button class="btn text-white btnEstablecer">Buscar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <!-- Campos y tabla -->
         <div class="container-fluid ">
             <div class="row">
@@ -137,132 +172,124 @@
 
                         <div class="card-body">
 
-                            <div class="row">
-                                <div class="Tablacarta">
-                                    <h4 class="card-title">Tabla de Formularios Pendientes</h4>
-                                    <h6 class="card-subtitle">
-                                        Se muestra la tabla de los formularios pendiente para el control de tiempo
-                                    </h6>
-                                    <div class="col-md-12">
-                                        <div class="table-responsive">
-                                            <table class="table table-striped">
-                                                <thead>
-                                                    <tr class="encabezado">
-                                                        <th scope="col">Funcionarios</th>
-                                                        <th scope="col">Fecha envio</th>
-                                                        <th scope="col">Horas validas</th>
-                                                        <th scope="col">Quincena</th>
-                                                        <th scope="col">Formulario</th>
-                                                        <th scope="col">Accion</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Carlos Pereira</td>
-                                                        <td>08/07/2021</td>
-                                                        <td>4</td>
-                                                        <td>Primera de Agosto</td>
-                                                        <td><a href="acme-doc-2.0.1.txt" download="Acme Documentation (ver. 2.0.1).txt">Archivo</a></td>
-                                                        <td>
-                                                            <div class="row">
-                                                                <a id="myBtn" onclick="modalAceptar('myBtn')" class="btn fa fa-check-square accion"></a>
-                                                                <a id="myBtnNegative" onclick="modalARechazar('myBtnNegative')" class="btn fa fa-trash-alt accion"></a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Yaresly Martinez</td>
-                                                        <td>25/07/2021</td>
-                                                        <td>3</td>
-                                                        <td>Primera de Agosto</td>
-                                                        <td><a href="acme-doc-2.0.1.txt" download="Acme Documentation (ver. 2.0.1).txt">Archivo</a></td>
-                                                        <td>
-                                                            <div class="row">
-                                                                <a id="myBtn2" onclick="modalAceptar('myBtn2')" class="btn fa fa-check-square accion"></a>
-                                                                <a id="myBtnNegative2" onclick="modalARechazar('myBtnNegative2')" class="btn fa fa-trash-alt accion"></a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Rafael Martinez</td>
-                                                        <td>31/07/2021</td>
-                                                        <td>6</td>
-                                                        <td>Segundo de Agosto</td>
-                                                        <td><a href="acme-doc-2.0.1.txt" download="Acme Documentation (ver. 2.0.1).txt">Archivo</a></td>
-                                                        <td>
-                                                            <div class="row">
-                                                                <a id="myBtn3" onclick="modalAceptar('myBtn3')" class="btn fa fa-check-square accion"></a>
-                                                                <a id="myBtnNegative3" onclick="modalARechazar('myBtnNegative3')" class="btn fa fa-trash-alt accion"></a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                            @if (Model[0].Motivo != null)
+                            {
+                                <div class="row">
+                                    <div class="Tablacarta">
+                                        <h4 class="card-title">Tabla de Formularios Pendientes</h4>
+                                        <h6 class="card-subtitle">
+                                            Se muestra la tabla de los formularios pendiente para el control de tiempo
+                                        </h6>
+                                        <div class="col-md-12">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr class="encabezado">
+                                                            <th scope="col">Motivo</th>
+                                                            <th scope="col">Fecha envio</th>
+                                                            <th scope="col">Horas validas</th>
+                                                            <th scope="col">Quincena</th>
+                                                            <th scope="col">Formulario</th>
+                                                            <th scope="col">Accion</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (ModelFormularioTiempo f in Model)
+                                                        {
+                                                            <tr>
+                                                                <td>@f.Motivo</td>
+                                                                <td>@f.FechaEnvio</td>
+                                                                <td>@f.HorasValidas</td>
+                                                                <td>@f.QUINCENA</td>
+                                                                <td><a href="@f.RutaArchivo" target="_blank">Archivo</a></td>
+                                                                <td>
+                                                                    <div class="row">
+                                                                        <a id="@f.idFormularioTiempo" onclick="modalAceptar('@f.idFormularioTiempo', '@f.Email', '@f.idFormularioTiempo')" class="btn fa fa-check-square accion"></a>
+                                                                        <a id="@f.idFormularioTiempo+1" onclick="modalARechazar('@f.idFormularioTiempo+1', '@f.Email', '@f.idFormularioTiempo')" class="btn fa fa-trash-alt accion"></a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            }
+                            else
+                            {
+                                <center>
+                                    <h5>Seleccione un funcionario / El funcionario no tiene formularios de tiempp</h5>
+                                </center>
+                            }
+                        </div>       
                     </div>
                 </div>
             </div>
         </div>
 
         <div id="myModal" class="modal">
+            <form asp-controller="ControlTiempo" asp-action="Pendientes">
 
-            <!-- Modal content -->
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h3>Aprobar formulario</h3>
-                <div class="carta">
-                    <h4 class="card-title">Descripcion</h4>
-                    <div class="form-group row">
-                        <div class="col-md-8 row">
-                            <textarea placeholder="Descripcion" class="form-control form-control-line txtArea"></textarea>
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <input asp-for="@Model[0].Email" id="idEmail" style="display:none" />
+                    <input asp-for="@Model[0].formularioPago.idFormularioTiempo" id="idFormularioAvalado" style="display:none" />
+                    <h3>Aprobar formulario</h3>
+                    <div class="carta">
+                        <h4 class="card-title">Descripcion</h4>
+                        <div class="form-group row">
+                            <div class="col-md-8 row">
+                                <textarea asp-for="@Model[0].formularioPago.Descripcion" placeholder="Descripcion" class="form-control form-control-line txtArea"></textarea>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="carta">
-                    <h4 class="card-title">Monto de dinero</h4>
-                    <div class="form-group row">
-                        <div class="col-md-5 row">
-                            <input type="text" placeholder="Monto"
-                                   class="form-control form-control-line txtMotivo" />
-                        </div>
-                        <div class="col-md-1">
-                            <div class="text-end upgrade-btn">
-                                <a onclick="definirCantidadDigitos()"
-                                   class="btn text-white btnEstablecer">Aprobar</a>
+                    <div class="carta">
+                        <h4 class="card-title">Monto de dinero</h4>
+                        <div class="form-group row">
+                            <div class="col-md-5 row">
+                                <input asp-for="@Model[0].formularioPago.Monto" type="text" placeholder="Monto"
+                                       class="form-control form-control-line txtMotivo" />
+                            </div>
+                            <div class="col-md-1">
+                                <div class="text-end upgrade-btn">
+                                    <button class="btn text-white btnEstablecer">Aprobar</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </form>
+                
         </div>
 
         <div id="ModalNegacion" class="modal">
+            <form asp-controller="DirectorAdmin" asp-action="AprobacionHoras">
 
-            <div class="modal-content">
-                <span class="closeN">&times;</span>
-                <h3>Rechazar formulario</h3>
-                <div class="carta2">
-                    <h4 class="card-title">Comentario</h4>
-                    <div class="form-group row">
-                        <div class="col-md-8 row">
-                            <textarea placeholder="Descripcion" class="form-control form-control-line txtArea"></textarea>
+                <div class="modal-content">
+                    <span class="closeN">&times;</span>
+                    <h3>Rechazar formulario</h3>
+                    <div class="carta2">
+                        <h4 class="card-title">Comentario</h4>
+                        <div class="form-group row">
+                            <div class="col-md-8 row">
+                                <textarea placeholder="Descripcion" class="form-control form-control-line txtArea"></textarea>
+                            </div>
+
                         </div>
-
-                    </div>
-                    <div class="col-md-1">
-                        <div class="text-end upgrade-btn">
-                            <a onclick="definirCantidadDigitos()"
-                               class="btn text-white btnEstablecer2">Rechazar</a>
+                        <div class="col-md-1">
+                            <div class="text-end upgrade-btn">
+                                <a onclick="definirCantidadDigitos()"
+                                   class="btn text-white btnEstablecer2">Rechazar</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </form>
         </div>
 
         <footer class="footer1 text-center">

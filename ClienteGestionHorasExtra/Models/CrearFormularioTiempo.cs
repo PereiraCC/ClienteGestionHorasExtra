@@ -12,11 +12,25 @@ namespace ClienteGestionHorasExtra.Models
 
         public int idFormularioAvalado { get; set; }
 
-        public int Horas { get; set; }
+        public int HorasValidas { get; set; }
 
-        public string Quincena { get; set; }
+        public string QUINCENA { get; set; }
 
         public bool Estado { get; set; }
+
+        public System.DateTime FechaEnvio { get; set; }
+
+        public string Motivo { get; set; }
+
+        public string Email { get; set; }
+
+        public string RutaArchivo { get; set; }
+        
+
+        public List<Persona> funcionarios { get; set; }
+
+        public ModelFormularioPago formularioPago { get; set; }
+
 
         public string ToJsonString()
         {
