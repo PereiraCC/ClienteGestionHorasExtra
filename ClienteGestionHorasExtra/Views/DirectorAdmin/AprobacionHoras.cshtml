@@ -1,4 +1,4 @@
-﻿
+﻿@model List<ModelFormularioAvalado>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,10 +15,14 @@
 
     <link rel="canonical" href="https://www.wrappixel.com/templates/xtreme-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
     <!-- Custom CSS -->
     <link href="~/dist/css/style.min.css" rel="stylesheet">
     <link href="~/css/site.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
     <title>Aprobacion Horas</title>
     <link rel="stylesheet" href="~/css/aprobacionHoras.css">
@@ -118,6 +122,41 @@
             </div>
         </div>
 
+        <div class="col-12" style="width: 1080px;">
+            <div class="card " style="height: 150px;">
+                <div class="card-body">
+                    <form asp-controller="DirectorAdmin" asp-action="obtenerFormularios">
+                        <div class="row">
+                            <div class="carta">
+                                <h5 class="card-title">
+                                    Seleccionar funcionario
+                                </h5>
+                                <h6 class="card-subtitle">
+                                    Revisar formularios avalados por funcionario
+                                </h6>
+                                <div class="form-group row">
+                                    <div class="col-md-10">
+                                        <select asp-for="@Model[0].funcionarios[0].email" class="form-control form-control-line txtChoose">
+                                            @foreach (Persona p in Model[0].funcionarios)
+                                            {
+                                                <option value="@p.email" selected>@p.nombreCompleto</option>
+                                            }
+                                            <option disabled selected hidden>Seleccionar funcionario </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="text-end upgrade-btn ">
+                                            <button class="btn text-white btnEstablecer">Buscar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <!-- Campos y tabla -->
         <div class="container-fluid ">
             <div class="row">
@@ -126,71 +165,58 @@
 
                         <div class="card-body">
 
-                            <div class="row">
-                                <div class="Tablacarta">
-                                    <h4 class="card-title">Tabla de formularios avalados</h4>
-                                    <h6 class="card-subtitle">
-                                        Se muestra la tabla de los formularios avalados
-                                    </h6>
-                                    <div class="col-md-12">
-                                        <div class="table-responsive">
-                                            <table class="table table-striped">
-                                                <thead>
-                                                    <tr class="encabezado">
-                                                        <th scope="col">Funcionarios</th>
-                                                        <th scope="col">Fecha envio</th>
-                                                        <th scope="col">Mes</th>
-                                                        <th scope="col">Total Horas</th>
-                                                        <th scope="col">Formulario</th>
-                                                        <th scope="col">Accion</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Carlos Pereira</td>
-                                                        <td>08/07/2021</td>
-                                                        <td>Agosto</td>
-                                                        <td>4</td>
-                                                        <td><a href="acme-doc-2.0.1.txt" download="Acme Documentation (ver. 2.0.1).txt">Archivo</a></td>
-                                                        <td>
-                                                            <div class="row">
-                                                                <a id="myBtn" onclick="modalAceptar('myBtn')" class="btn fa fa-check-square accion"></a>
-                                                                <a id="myBtnNegative" onclick="modalARechazar('myBtnNegative')" class="btn fa fa-trash-alt accion"></a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Yaresly Martinez</td>
-                                                        <td>25/07/2021</td>
-                                                        <td>Agosto</td>
-                                                        <td>3</td>
-                                                        <td><a href="acme-doc-2.0.1.txt" download="Acme Documentation (ver. 2.0.1).txt">Archivo</a></td>
-                                                        <td>
-                                                            <div class="row">
-                                                                <a id="myBtn2" onclick="modalAceptar('myBtn2')" class="btn fa fa-check-square accion"></a>
-                                                                <a id="myBtnNegative2" onclick="modalARechazar('myBtnNegative2')" class="btn fa fa-trash-alt accion"></a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Rafael Martinez</td>
-                                                        <td>31/07/2021</td>
-                                                        <td>Agosto</td>
-                                                        <td>6</td>
-                                                        <td><a href="acme-doc-2.0.1.txt" download="Acme Documentation (ver. 2.0.1).txt">Archivo</a></td>
-                                                        <td>
-                                                            <div class="row">
-                                                                <a id="myBtn3" onclick="modalAceptar('myBtn3')" class="btn fa fa-check-square accion"></a>
-                                                                <a id="myBtnNegative3" onclick="modalARechazar('myBtnNegative3')" class="btn fa fa-trash-alt accion"></a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                            @if (Model[0].Motivo != null)
+                            {
+                                <div class="row">
+                                    <div class="Tablacarta">
+                                        <h4 class="card-title">Tabla de formularios avalados</h4>
+                                        <h6 class="card-subtitle">
+                                            Se muestra la tabla de los formularios avalados
+                                        </h6>
+                                        <div class="col-md-12">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr class="encabezado">
+                                                            <th scope="col">Motivo</th>
+                                                            <th scope="col">Fecha envio</th>
+                                                            <th scope="col">Mes</th>
+                                                            <th scope="col">Total Horas</th>
+                                                            <th scope="col">Formulario</th>
+                                                            <th scope="col">Acciones</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (ModelFormularioAvalado f in Model)
+                                                        {
+                                                            <tr>
+                                                                <td>@f.Motivo</td>
+                                                                <td>@f.FechaEnvio</td>
+                                                                <td>@f.Mes</td>
+                                                                <td>@f.TotalHoras</td>
+                                                                <td><a href="@f.RutaArchivo" target="_blank">Archivo</a></td>
+                                                                <td>
+                                                                    <div class="row">
+                                                                        <a id="@f.idFormularioAvalado" onclick="modalAceptar('@f.idFormularioAvalado')" class="btn fa fa-check-square accion"></a>
+                                                                        <a id="@f.idFormularioAvalado+1" onclick="modalARechazar('@f.idFormularioAvalado+1')" class="btn fa fa-trash-alt accion"></a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            }
+                            else
+                            {
+                                <center>
+                                    <h5>Seleccione un funcionario / El funcionario no tiene formularios avalados</h5>
+                                </center>
+                            }
+
                         </div>
                     </div>
                 </div>

@@ -14,10 +14,18 @@ namespace ClienteGestionHorasExtra.Models
         public System.DateTime FechaEnvio { get; set; }
         public string Motivo { get; set; }
         public bool Estado { get; set; }
+
+        public string Mes { get; set; }
+
+        public int TotalHoras { get; set; }
+
+        public string RutaArchivo { get; set; }
+
         public CrearFormularioAvalado formulario { get; set; }
 
         public List<string> motivos { get; set; }
 
+        public List<Persona> funcionarios { get; set; }
 
     }
 }
