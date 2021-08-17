@@ -12,7 +12,7 @@ namespace ClienteGestionHorasExtra.Controllers
 {
     public class HomeController : Controller
     {
-        private Api api = new Api(@"http://localhost/ApiGestionHorasExtra/api");
+        private Api api = new Api(@"http://api.gestionhoraextra.com/api");
         //private string URL_API = "http://localhost/WebApiMatricula/api/Usuarios/Estudiantes";
 
         [HttpGet]

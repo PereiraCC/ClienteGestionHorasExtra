@@ -11,7 +11,7 @@ namespace ClienteGestionHorasExtra.Controllers
 {
     public class Funcionarios : Controller
     {
-        private Api api = new Api(@"http://localhost/ApiGestionHorasExtra/api");
+        private Api api = new Api(@"http://api.gestionhoraextra.com/api");
 
 
         [HttpGet]
