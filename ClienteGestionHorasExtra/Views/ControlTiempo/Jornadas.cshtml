@@ -126,41 +126,6 @@
 
         <div class="container-fluid">
 
-            <!-- Actividades pendientes-->
-            <div class="col-12" style="width: 1080px;">
-                <div class="card " style="height: 150px;">
-                    <div class="card-body">
-
-                        <div class="row">
-                            <div class="carta">
-                                <h5 class="card-title">
-                                    Seleccionar departamento</h5>
-                                    <h6 class="card-subtitle">
-                                        Revisar jornadas por departamento
-                                    </h6>
-                                    <div class="form-group row">
-                                        <div class="col-md-10">
-                                            <select class="form-control form-control-line txtChoose">
-                                                <option value="" selected>Jefatura</option>
-                                                <option value="" selected>Funcionario</option>
-                                                <option value="" selected>Director administrativo</option>
-                                                <option value="" selected>Encargado de control</option>
-                                                <option value="" selected>Encargado de planilla</option>
-                                                <option disabled selected hidden>Seleccionar departamento </option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-1">
-                                            <div class="text-end upgrade-btn ">
-                                                <a class="btn text-white btnEstablecer">Seleccionar</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--  fin Actividades pendientes-->
             <!-- Solicitud tareas-->
             <div class="col-12" style="width: 1080px;">
                 <div class="card " style="height: 300px;">
@@ -176,7 +141,7 @@
                                             <div class="row">
 
                                                 <div class="col-sm-12 col-lg-4">
-                                                    <a id="carta1" class="pointer" onclick="modalJornada('carta1')">
+                                                    <a id="carta1" class="pointer" onclick="modalJornada('carta1', '1', 'Funcionarios', '08:00', '17:00', '8')">
                                                         <div class="card carta" style="width: 180px;margin: auto;">
                                                             <img src="~/img/tarea.png" class="imgcard">
                                                             <h4 class="card-title titulo">Jornada</h4>
@@ -186,7 +151,7 @@
                                                 </div>
 
                                                 <div class="col-sm-12 col-lg-4">
-                                                    <a id="carta2" class="pointer" onclick="modalJornada('carta2')">
+                                                    <a id="carta2" class="pointer" onclick="modalJornada('carta2', '2', 'Jefatura', '07:00', '15:30', '8')">
                                                         <div class="card carta" style="width: 180px;margin: auto;">
                                                             <img src="~/img/tarea.png" class="imgcard">
                                                             <h4 class="card-title titulo">Jornada</h4>
@@ -196,7 +161,7 @@
                                                 </div>
 
                                                 <div class="col-sm-12 col-lg-4">
-                                                    <a id="carta3" class="pointer" onclick="modalJornada('carta3')">
+                                                    <a id="carta3" class="pointer" onclick="modalJornada('carta3', '3', 'Director Administrativo', '08:00', '16:00', '8')">
                                                         <div class="card carta" style="width: 180px;margin: auto;">
                                                             <img src="~/img/tarea.png" class="imgcard">
                                                             <h4 class="card-title titulo">Jornada</h4>
@@ -216,7 +181,7 @@
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-sm-12 col-lg-4">
-                                                    <a id="carta4" class="pointer" onclick="modalJornada('carta4')">
+                                                    <a id="carta4" class="pointer" onclick="modalJornada('carta4', '4', 'Encargado de Control', '08:30', '17:30', '8')">
                                                         <div class="card carta" style="width: 180px;margin: auto;">
                                                             <img src="~/img/tarea.png" class="imgcard">
                                                             <h4 class="card-title titulo">Jornada</h4>
@@ -226,21 +191,11 @@
                                                 </div>
 
                                                 <div class="col-sm-12 col-lg-4">
-                                                    <a id="carta5" class="pointer" onclick="modalJornada('carta5')">
+                                                    <a id="carta5" class="pointer" onclick="modalJornada('carta5', '5', 'Encargado de Planilla', '08:00', '16:00', '8')">
                                                         <div class="card carta" style="width: 180px;margin: auto;">
                                                             <img src="~/img/tarea.png" class="imgcard">
                                                             <h4 class="card-title titulo">Jornada</h4>
                                                             <p class="card-text desc">00005</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-                                                <div class="col-sm-12 col-lg-4">
-                                                    <a id="carta6" class="pointer" onclick="modalJornada('carta6')">
-                                                        <div class="card carta" style="width: 180px;margin: auto;">
-                                                            <img src="~/img/tarea.png" class="imgcard">
-                                                            <h4 class="card-title titulo">Jornada</h4>
-                                                            <p class="card-text desc">00006</p>
                                                         </div>
                                                     </a>
                                                 </div>
@@ -306,12 +261,12 @@
             <!-- Modal content -->
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <h3>Jornada #1</h3>
+                <h3 id="txtTitulo" ></h3>
                 <div class="carta2">
                     <h4 class="card-title titulo2">Departamento</h4>
                     <div class="form-group row">
                         <div class="col-md-12 row">
-                            <input type="text" placeholder="Funcionarios"
+                            <input id="txtDepartamento" type="text" 
                                    class="form-control form-control-line txtMotivo2" readonly />
                         </div>
                     </div>
@@ -320,12 +275,12 @@
                     <div class="form-group row">
                         <div class="col-md-5 row">
                             <h4 class="card-title">Entrada</h4>
-                            <input type="text" placeholder="08:00"
+                            <input id="txtEntrada" type="text" 
                                    class="form-control form-control-line txtMotivo2" readonly />
                         </div>
                         <div class="col-md-5 row carta3">
                             <h4 class="card-title">Salida</h4>
-                            <input type="text" placeholder="17:00"
+                            <input id="txtSalida" type="text" 
                                    class="form-control form-control-line txtMotivo2" readonly />
                         </div>
                         <!-- <div class="col-md-1">
@@ -341,7 +296,7 @@
                     <div class="form-group row">
                         <div class="col-md-5 row">
                             <h4 class="card-title titulo2">Total de horas</h4>
-                            <input type="text" placeholder="8"
+                            <input id="txtTotalHoras" type="text" 
                                    class="form-control form-control-line txtMotivo2" readonly />
                         </div>
                         <div class="col-md-5 row carta3">

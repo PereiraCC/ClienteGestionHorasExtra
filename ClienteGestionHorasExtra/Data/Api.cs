@@ -442,6 +442,53 @@ namespace ClienteGestionHorasExtra.Data
 
         }
 
+        public List<ModelPago> ObtenerFormulariosPago(string email, string Base2)
+        {
+            try
+            {
+                List<ModelPago> lista = null;
+
+                using (var client = new HttpClient())
+                {
+                    var task = Task.Run(async () =>
+                    {
+                        return await client.GetAsync(URL_API + Base2 + "?email=" + email);
+                    }
+                    );
+                    HttpResponseMessage message = task.Result;
+                    if (message.StatusCode == System.Net.HttpStatusCode.InternalServerError)
+                    {
+                        var task1 = Task<string>.Run(async () =>
+                        {
+                            return await message.Content.ReadAsStringAsync();
+                        });
+                        string mens = task1.Result;
+                        ModelError error = JsonConvert.DeserializeObject<ModelError>(mens);
+                        return lista;
+
+                    }
+                    else
+                    {
+                        var task2 = Task<string>.Run(async () =>
+                        {
+                            return await message.Content.ReadAsStringAsync();
+                        });
+                        string mens = task2.Result;
+                        lista = JsonConvert.DeserializeObject<List<ModelPago>>(mens);
+
+                    }
+                    return lista;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+
         public List<ModelEvidencias> ObtenerEvidenciasFuncionario(string email, string Base2)
         {
             try

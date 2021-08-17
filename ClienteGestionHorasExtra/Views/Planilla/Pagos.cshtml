@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model List<ModelPago>
+
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -13,10 +15,11 @@
 
     <link rel="canonical" href="https://www.wrappixel.com/templates/xtreme-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/assets/images/favicon.png">
     <!-- Custom CSS -->
     <link href="~/dist/css/style.min.css" rel="stylesheet">
     <link href="~/css/site.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
@@ -87,7 +90,7 @@
                         <li class="sidebar-item menuVertical">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                asp-controller="Planilla" asp-action="Pagos" aria-expanded="false">
-                                <i class="mdi mdi-view-dashboard"></i><span class="hide-menu opcion">Aprobacion de horas</span>
+                                <i class="mdi mdi-view-dashboard"></i><span class="hide-menu opcion">Informes de planillas</span>
                             </a>
                         </li>
 
@@ -121,62 +124,37 @@
         <div class="container-fluid">
 
             <!-- Formulario de busqueda-->
-            <div class="row">
-                <div class="col-12">
-
-                    <div class="card">
-
-                        <div class="card-body">
-
-                            <h3 class="tituloFormulario">Buscar Informes de planillas</h3>
-
+            <div class="col-12" style="width: 1080px;">
+                <div class="card " style="height: 150px;">
+                    <div class="card-body">
+                        <form asp-controller="Planilla" asp-action="obtenerPagos">
                             <div class="row">
-
-                                <div class="carta1">
-                                    <h4 class="card-title titulo1">Seleccionar funcionarios</h4>
+                                <div class="carta">
+                                    <h5 class="card-title">
+                                        Seleccionar funcionario
+                                    </h5>
+                                    <h6 class="card-subtitle">
+                                        Revisar formularios de tiempo por funcionario
+                                    </h6>
                                     <div class="form-group row">
-                                        <div class="col-md-10 row">
-                                            <select class="form-select form-control-line txtChoose">
-                                                <option value="" selected>Jefatura</option>
-                                                <option value="" selected>Funcionario</option>
-                                                <option value="" selected>Director administrativo</option>
-                                                <option value="" selected>Encargado de control</option>
-                                                <option value="" selected>Encargado de planilla</option>
-                                                <option disabled selected hidden>Seleccionar funcionarios </option>
+                                        <div class="col-md-10">
+                                            <select asp-for="@Model[0].Email" class="form-control form-control-line txtChoose">
+                                                @foreach (Persona p in Model[0].funcionarios)
+                                                {
+                                                    <option value="@p.email" selected>@p.nombreCompleto</option>
+                                                }
+                                                <option disabled selected hidden>Seleccionar funcionario </option>
                                             </select>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div class="carta1">
-                                    <h4 class="card-title titulo1">Fecha desde</h4>
-                                    <div class="form-group row">
-                                        <div class="col-md-10 row">
-                                            <input placeholder="Desde" class="form-control form-control-line txtMotivo"
-                                                   type="text" onfocus="(this.type='date')" onblur="(this.type='text')"
-                                                   id="date" />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="carta1">
-                                    <h4 class="card-title titulo1">Fecha hasta</h4>
-                                    <div class="form-group row">
-                                        <div class="col-md-9 row">
-                                            <input placeholder="Hasta" class="form-control form-control-line txtMotivo1"
-                                                   type="text" onfocus="(this.type='date')" onblur="(this.type='text')"
-                                                   id="date" />
-                                        </div>
                                         <div class="col-md-1">
-                                            <div class="text-end upgrade-btn">
-                                                <a onclick="definirCantidadDigitos()"
-                                                   class="btn text-white btnEstablecer">Buscar</a>
+                                            <div class="text-end upgrade-btn ">
+                                                <button class="btn text-white btnEstablecer">Buscar</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -186,121 +164,123 @@
                 <div class="card " style="height: 300px;">
 
                     <div class="card-body">
-                        <h5 class="card-title">Informes</h5>
-                        <!-- Carrusel de Cartas-->
-                        <div class="row">
-                            <div id="inam" class="carousel slide" data-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <div class="container">
-                                            <div class="row">
 
-                                                <div class="col-sm-12 col-lg-4">
-                                                    <a id="carta1" class="pointer" onclick="modalJornada('carta1')">
-                                                        <div class="card carta" style="width: 180px;margin: auto;">
-                                                            <img src="~/img/tarea.png" class="imgcard">
-                                                            <h4 class="card-title titulo">Informe</h4>
-                                                            <p class="card-text desc">00001</p>
+                        @if (Model[0].Motivo != null)
+                        {
+                            <h5 class="card-title">Informes</h5>
+                            <!-- Carrusel de Cartas-->
+                            <div class="row">
+                                <div id="inam" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <div class="container">
+                                                <div class="row">
+
+                                                    @for (int i = 0; i < Model.Count; i++)
+                                                    {
+                                                        <div class="col-sm-12 col-lg-4">
+                                                            <a id="@i" class="pointer" onclick="modalPago('@i', '@Model[i].idFormularioPago','@Model[i].NombreCompleto', '@Model[i].HorasValidas', '@Model[i].QUINCENA', '@Model[i].Descripcion', '@Model[i].Monto', '@Model[i].idFormularioPago')">
+                                                                <div class="card carta" style="width: 180px;margin: auto;">
+                                                                    <img src="~/img/tarea.png" class="imgcard">
+                                                                    <h4 class="card-title titulo">Solicitud</h4>
+                                                                    <p class="card-text desc">@Model[i].idFormularioPago</p>
+                                                                </div>
+                                                            </a>
                                                         </div>
-                                                    </a>
-                                                </div>
 
-                                                <div class="col-sm-12 col-lg-4">
-                                                    <a id="carta2" class="pointer" onclick="modalJornada('carta2')">
-                                                        <div class="card carta" style="width: 180px;margin: auto;">
-                                                            <img src="~/img/tarea.png" class="imgcard">
-                                                            <h4 class="card-title titulo">Informe</h4>
-                                                            <p class="card-text desc">00002</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
+                                                        if (i == 2)
+                                                        {
+                                                            break;
+                                                        }
+                                                    }
 
-                                                <div class="col-sm-12 col-lg-4">
-                                                    <a id="carta3" class="pointer" onclick="modalJornada('carta3')">
-                                                        <div class="card carta" style="width: 180px;margin: auto;">
-                                                            <img src="~/img/tarea.png" class="imgcard">
-                                                            <h4 class="card-title titulo">Informe</h4>
-                                                            <p class="card-text desc">00003</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-
-                                            </div>
-
-                                        </div>
-
-
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-sm-12 col-lg-4">
-                                                    <a id="carta4" class="pointer" onclick="modalJornada('carta4')">
-                                                        <div class="card carta" style="width: 180px;margin: auto;">
-                                                            <img src="~/img/tarea.png" class="imgcard">
-                                                            <h4 class="card-title titulo">Informe</h4>
-                                                            <p class="card-text desc">00004</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-                                                <div class="col-sm-12 col-lg-4">
-                                                    <a id="carta5" class="pointer" onclick="modalJornada('carta5')">
-                                                        <div class="card carta" style="width: 180px;margin: auto;">
-                                                            <img src="~/img/tarea.png" class="imgcard">
-                                                            <h4 class="card-title titulo">Informe</h4>
-                                                            <p class="card-text desc">00005</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-                                                <div class="col-sm-12 col-lg-4">
-                                                    <a id="carta6" class="pointer" onclick="modalJornada('carta6')">
-                                                        <div class="card carta" style="width: 180px;margin: auto;">
-                                                            <img src="~/img/tarea.png" class="imgcard">
-                                                            <h4 class="card-title titulo">Informe</h4>
-                                                            <p class="card-text desc">00006</p>
-                                                        </div>
-                                                    </a>
+                                                    @*<div class="col-sm-12 col-lg-4">
+                                                        <a id="carta1" class="pointer" onclick="modalJornada('carta1')">
+                                                            <div class="card carta" style="width: 180px;margin: auto;">
+                                                                <img src="~/img/tarea.png" class="imgcard">
+                                                                <h4 class="card-title titulo">Informe</h4>
+                                                                <p class="card-text desc">00001</p>
+                                                            </div>
+                                                        </a>
+                                                    </div>*@
                                                 </div>
 
                                             </div>
 
+
+                                        </div>
+                                        <div class="carousel-item">
+                                            <div class="container">
+                                                <div class="row">
+
+                                                    @for (int i = 3; i < Model.Count; i++)
+                                                    {
+                                                        <div class="col-sm-12 col-lg-4">
+                                                            <a id="@i" class="pointer" onclick="modalPago('@i', '@Model[i].NombreCompleto', '@Model[i].HorasValidas', '@Model[i].QUINCENA', '@Model[i].Descripcion', '@Model[i].Monto', '@Model[i].idFormularioPago')">
+                                                                <div class="card carta" style="width: 180px;margin: auto;">
+                                                                    <img src="~/img/tarea.png" class="imgcard">
+                                                                    <h4 class="card-title titulo">Solicitud</h4>
+                                                                    <p class="card-text desc">@Model[i].idSolicitud</p>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+
+                                                        if (i == 5)
+                                                        {
+                                                            break;
+                                                        }
+                                                    }
+                                                    @*<div class="col-sm-12 col-lg-4">
+                                                        <a id="carta4" class="pointer" onclick="modalJornada('carta4')">
+                                                            <div class="card carta" style="width: 180px;margin: auto;">
+                                                                <img src="~/img/tarea.png" class="imgcard">
+                                                                <h4 class="card-title titulo">Informe</h4>
+                                                                <p class="card-text desc">00004</p>
+                                                            </div>
+                                                        </a>
+                                                    </div>*@
+
+                                                </div>
+
+                                            </div>
+
+
                                         </div>
 
-
                                     </div>
+                                    <a href="#inam" class="prev" data-slide="prev">&#10094;</a>
+                                    <a href="#inam" class="next" data-slide="next">&#10095;</a>
 
                                 </div>
-                                <a href="#inam" class="prev" data-slide="prev">&#10094;</a>
-                                <a href="#inam" class="next" data-slide="next">&#10095;</a>
 
                             </div>
-
-                        </div>
+                        }
+                        else
+                        {
+                            <center>
+                                <h5>Seleccione un funcionario / El funcionario no tiene formularios de pago</h5>
+                            </center>
+                        }
                         <!-- fin Carrusel de Cartas-->
                     </div>
                 </div>
             </div>
             <!-- Cartas-->
-
-
-
         </div>
 
         <div id="myModal" class="modal">
+        <div class="modal-content2">
 
-            <!-- Modal content -->
-            <div class="modal-content2">
+            <form asp-controller="Planilla" asp-action="Pagos">
+
                 <span class="close">&times;</span>
-                <h3>Informe #1</h3>
+                <h3 id="txtTitulo"></h3>
                 <div class="carta2">
+                    <input asp-for="@Model[0].idFormularioPago" id="idFormularioPago" style="display:none" />
                     <h4 class="card-title titulo1">Funcionario</h4>
                     <div class="form-group row">
                         <div class="col-md-12 row">
-                            <input type="text" value="Carlos Pereira"
-                                   class="form-control form-control-line txtMotivo2" readonly />
+                            <input id="txtNombre" type="text" class="form-control form-control-line txtMotivo2" readonly />
                         </div>
                     </div>
                 </div>
@@ -309,13 +289,11 @@
                     <div class="form-group row">
                         <div class="col-md-5 row">
                             <h4 class="card-title">Horas validas</h4>
-                            <input type="text" value="8" class="form-control form-control-line txtMotivo2"
-                                   readonly />
+                            <input id="txtHoras" type="text" class="form-control form-control-line txtMotivo2" readonly />
                         </div>
                         <div class="col-md-7 row carta3">
                             <h4 class="card-title">Quincena</h4>
-                            <input type="text" value="Primera de Agosto" class="form-control form-control-line txtMotivo3"
-                                   readonly />
+                            <input id="txtQuincena" type="text" class="form-control form-control-line txtMotivo3" readonly />
                         </div>
 
                     </div>
@@ -325,8 +303,7 @@
                     <h4 class="card-title titulo1">Descripcion</h4>
                     <div class="form-group row">
                         <div class="col-md-12 row">
-                            <input type="text" value="El informe de numero 5895"
-                                   class="form-control form-control-line txtMotivo2" readonly />
+                            <input id="txtDescripcion" type="text" class="form-control form-control-line txtMotivo2" readonly />
                         </div>
                     </div>
                 </div>
@@ -335,33 +312,44 @@
                     <div class="form-group row">
                         <div class="col-md-5 row">
                             <h4 class="card-title">Monto por hora</h4>
-                            <input type="text" placeholder="8000" class="form-control form-control-line txtMotivo2"
+                            <input asp-for="@Model[0].Monto" id="txtMonto" type="text" class="form-control form-control-line txtMotivo2"
                                    readonly />
                         </div>
                         <div class="col-md-7 row carta3">
                             <h4 class="card-title">Tipo de pago</h4>
-                            <select class="form-control form-control-line txtMotivo2">
-                                <option value="" selected>Jefatura</option>
-                                <option value="" selected>Funcionario</option>
-                                <option value="" selected>Director administrativo</option>
-                                <option value="" selected>Encargado de control</option>
-                                <option value="" selected>Encargado de planilla</option>
-                                <option disabled selected hidden>Seleccionar funcionarios </option>
+                            <select asp-for="@Model[0].TipoPago" class="form-control form-control-line txtMotivo2">
+                                <option value="EFECTIVO" selected>EFECTIVO</option>
+                                <option value="TRANSFERENCIA BANCARIA" selected>TRANSFERENCIA BANCARIA</option>
+                                <option value="CHEQUE" selected>CHEQUE</option>
+                                <option disabled selected hidden>Seleccionar Tipo Pago </option>
                             </select>
                         </div>
 
-                        <div class="col-md-4 row carta4">
-                            <div class="text-end upgrade-btn">
-                                <a onclick="cerrarModal()" class="btn text-white btnEstablecer5">Aceptar</a>
+                        <div class="carta2">
+                            <div class="form-group row">
+                                <div class="col-md-5 row carta3">
+                                    <div class="text-end upgrade-btn">
+                                        <button class="btn text-white btnEstablecer3Actividades">Pagar</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 row carta3">
+                                    <div class="text-end upgrade-btn">
+                                        <a onclick="cerrarModal()"
+                                           class="btn text-white btnEstablecer4">Cerrar</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                     </div>
                 </div>
 
-            </div>
+            </form>
+            
 
         </div>
+
+    </div>
 
         <footer class="footer1 text-center">
             <hr class="linea">
@@ -369,7 +357,7 @@
         </footer>
     </div>
 
-    <script src="~/js/modalJornadas.js"></script>
+    <script src="~/js/modalPagos.js"></script>
 
 
 </body>
