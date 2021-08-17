@@ -157,109 +157,120 @@
                                 <form class="row" asp-controller="Funcionarios" asp-action="FormulariosAvalados">
 
 
-                                        <div class="carta">
-                                            <h4 class="card-title">Ingrese el motivo de la solicitud</h4>
-                                            <h6 class="card-subtitle">
-                                                Especifique el motivo para el formulario avalado
-                                            </h6>
-                                            <div class="col-md-4">
-                                                <select asp-for="@Model[0].formulario.Motivo" class="form-control form-control-line txtMotivo">
-                                                    @foreach (string data in Model[0].motivos)
-                                                    {
-                                                        <option value="@data">@data</option>
-                                                    }
-                                                    <option class="opcion" value="" disabled selected hidden>Motivo</option>
-                                                </select>
-                                            </div>
-
+                                    <div class="carta">
+                                        <h4 class="card-title">Ingrese el motivo de la solicitud</h4>
+                                        <h6 class="card-subtitle">
+                                            Especifique el motivo para el formulario avalado
+                                        </h6>
+                                        <div class="col-md-4">
+                                            <select asp-for="@Model[0].formulario.Motivo" class="form-control form-control-line txtMotivo">
+                                                @foreach (string data in Model[0].motivos)
+                                                {
+                                                    <option value="@data">@data</option>
+                                                }
+                                                <option class="opcion" value="" disabled selected hidden>Motivo</option>
+                                            </select>
                                         </div>
 
-                                        <div class="carta1">
-                                            <h4 class="card-title">Ingrese el mes</h4>
-                                            <h6 class="card-subtitle">
-                                                Especifique el mes para el formulario avalado
-                                            </h6>
-                                            <div class="col-md-4">
-                                                <select asp-for="@Model[0].formulario.Mes" class="form-control form-control-line txtMotivo1" id="cboMes">
-                                                    <option value="Enero">Enero</option>
-                                                    <option value="Febrero">Febrero</option>
-                                                    <option value="Marzo">Marzo</option>
-                                                    <option value="Abril">Abril</option>
-                                                    <option value="Mayo">Mayo</option>
-                                                    <option value="Junio">Junio</option>
-                                                    <option value="Julio">Julio</option>
-                                                    <option value="Agosto">Agosto</option>
-                                                    <option value="Septiembre">Septiembre</option>
-                                                    <option value="Octubre">Octubre</option>
-                                                    <option value="Noviembre">Noviembre</option>
-                                                    <option value="Diciembre">Diciembre</option>
-                                                    <option class="opcion" value="" disabled selected hidden>Mes</option>
-                                                </select>
-                                            </div>
+                                    </div>
 
+                                    <div class="carta1">
+                                        <h4 class="card-title">Ingrese el mes</h4>
+                                        <h6 class="card-subtitle">
+                                            Especifique el mes para el formulario avalado
+                                        </h6>
+                                        <div class="col-md-4">
+                                            <select asp-for="@Model[0].formulario.Mes" class="form-control form-control-line txtMotivo1" id="cboMes">
+                                                <option value="Enero">Enero</option>
+                                                <option value="Febrero">Febrero</option>
+                                                <option value="Marzo">Marzo</option>
+                                                <option value="Abril">Abril</option>
+                                                <option value="Mayo">Mayo</option>
+                                                <option value="Junio">Junio</option>
+                                                <option value="Julio">Julio</option>
+                                                <option value="Agosto">Agosto</option>
+                                                <option value="Septiembre">Septiembre</option>
+                                                <option value="Octubre">Octubre</option>
+                                                <option value="Noviembre">Noviembre</option>
+                                                <option value="Diciembre">Diciembre</option>
+                                                <option class="opcion" value="" disabled selected hidden>Mes</option>
+                                            </select>
                                         </div>
 
-                                        <div class="carta1">
-                                            <h4 class="card-title">Ingrese el total de horas</h4>
-                                            <h6 class="card-subtitle">
-                                                Especifique las horas para el formulario avalado
-                                            </h6>
-                                            <div class="col-md-4">
-                                                <input asp-for="@Model[0].formulario.Hora" id="txtCantidad" type="number" placeholder="Horas" min="1" max="99" class="form-control form-control-line txtMotivo1" />
-                                            </div>
+                                    </div>
 
+                                    <div class="carta1">
+                                        <h4 class="card-title">Ingrese el total de horas</h4>
+                                        <h6 class="card-subtitle">
+                                            Especifique las horas para el formulario avalado
+                                        </h6>
+                                        <div class="col-md-4">
+                                            <input asp-for="@Model[0].formulario.Hora" id="txtCantidad" type="number" placeholder="Horas" min="1" max="99" class="form-control form-control-line txtMotivo1" />
                                         </div>
-         
-                                        <div class="carta">
-                                            <h4 class="card-title">Documento de la solicitud</h4>
-                                            <h6 class="card-subtitle">
-                                                Adjunte el documento de la solicitud
-                                            </h6>
-                                            <div class="form-group row">
-                                                <div class="col-md-10 row">
-                                                    <input asp-for="@Model[0].formulario.Ruta" id="txtChoose" type="file" class="form-control form-control-line txtChoose" />
+
+                                    </div>
+
+                                    <div class="carta">
+                                        <h4 class="card-title">Documento de la solicitud</h4>
+                                        <h6 class="card-subtitle">
+                                            Adjunte el documento de la solicitud
+                                        </h6>
+                                        <div class="form-group row">
+                                            <div class="col-md-10 row">
+                                                <input asp-for="@Model[0].formulario.Ruta" id="txtChoose" type="file" class="form-control form-control-line txtChoose" />
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="text-end upgrade-btn">
+                                                    <button class="btn text-white btnEstablecer">Enviar</button>
                                                 </div>
-                                                <div class="col-md-1">
-                                                    <div class="text-end upgrade-btn">
-                                                        <button class="btn text-white btnEstablecer">Enviar</button>
-                                                    </div>
-                                                </div>
                                             </div>
-                                        </div> 
+                                        </div>
+                                    </div>
 
                                 </form>
 
-                                <div class="Tablacarta">
-                                    <h4 class="card-title">Tabla de formularios avalados</h4>
-                                    <h6 class="card-subtitle">
-                                        Se muestra la tabla de los formularios avalados
-                                    </h6>
-                                    <div class="col-md-12">
-                                        <div class="table-responsive">
-                                            <table class="table table-striped">
-                                                <thead>
-                                                    <tr class="encabezado">
-                                                        <th scope="col">Numero Formulario</th>
-                                                        <th scope="col">Fecha</th>
-                                                        <th scope="col">Motivo de solicitud</th>
-                                                        <th scope="col">Estado</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach (ModelFormularioAvalado f in Model)
-                                                    {
-                                                        <tr>
-                                                            <td>@f.idFormularioAvalado</td>
-                                                            <td>@f.FechaEnvio</td>
-                                                            <td>@f.Motivo</td>
-                                                            <td>@f.Estado</td>
+                                @if (Model[0].Motivo != null)
+                                {
+                                    <div class="Tablacarta">
+                                        <h4 class="card-title">Tabla de formularios avalados</h4>
+                                        <h6 class="card-subtitle">
+                                            Se muestra la tabla de los formularios avalados
+                                        </h6>
+                                        <div class="col-md-12">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr class="encabezado">
+                                                            <th scope="col">Numero Formulario</th>
+                                                            <th scope="col">Fecha</th>
+                                                            <th scope="col">Motivo de solicitud</th>
+                                                            <th scope="col">Estado</th>
                                                         </tr>
-                                                    }
-                                                </tbody>
-                                            </table>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (ModelFormularioAvalado f in Model)
+                                                        {
+                                                            <tr>
+                                                                <td>@f.idFormularioAvalado</td>
+                                                                <td>@f.FechaEnvio</td>
+                                                                <td>@f.Motivo</td>
+                                                                <td>@f.Estado</td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                }
+                                else
+                                {
+                                    <center>
+                                        <h5>No tiene formulario avalados</h5>
+                                    </center>
+                                }
+
+
 
                             </div>
                         </div>

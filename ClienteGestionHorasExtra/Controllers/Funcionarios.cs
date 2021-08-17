@@ -30,7 +30,17 @@ namespace ClienteGestionHorasExtra.Controllers
             {
                 motivos.Add(t.Motivo);
             }
-            formularios[0].motivos = motivos;
+            if(formularios.Count > 1)
+            {
+                formularios[0].motivos = motivos;
+            }
+            else
+            {
+                ModelFormularioAvalado temp = new ModelFormularioAvalado();
+                temp.motivos = motivos;
+                formularios.Add(temp);
+            }
+            
             return View(formularios);
         }
 
